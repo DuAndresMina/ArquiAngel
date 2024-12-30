@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const projects = {
+  'modern-kitchen': {
+    title: 'Modern Kitchen Renovation',
+    description: 'Complete kitchen transformation with custom cabinets and island.',
+    fullDescription: `Our modern kitchen renovation project showcases the perfect blend of functionality and style. 
+    We completely transformed this space with custom-built cabinets, a spacious island, and state-of-the-art appliances.
+    The project included:
+    - Custom cabinetry with soft-close mechanisms
+    - Quartz countertops
+    - Modern lighting fixtures
+    - Energy-efficient appliances
+    - Custom backsplash`,
+    images: ['/portfolio/kitchen.jpg'],
+    duration: '4 weeks',
+    cost: '$25,000',
+    location: 'San Francisco, CA'
+  },
+  'luxury-bathroom': {
+    title: 'Luxury Bathroom Remodel',
+    description: 'Spa-like bathroom renovation with premium fixtures.',
+    fullDescription: `This luxury bathroom remodel transformed an ordinary bathroom into a spa-like retreat.
+    The renovation focused on creating a serene atmosphere with high-end materials and fixtures.
+    Key features include:
+    - Freestanding soaking tub
+    - Custom glass shower enclosure
+    - Heated flooring
+    - Double vanity with marble countertops
+    - LED mirror with anti-fog technology`,
+    images: ['/portfolio/bathroom.jpg'],
+    duration: '3 weeks',
+    cost: '$18,000',
+    location: 'Los Angeles, CA'
+  },
+  'restaurant-design': {
+    title: 'Restaurant Interior Design',
+    description: 'Contemporary restaurant space with custom lighting.',
+    fullDescription: `A complete restaurant renovation that transformed the space into a modern dining destination.
+    The project focused on creating an inviting atmosphere while maximizing seating capacity.
+    Features include:
+    - Custom lighting design
+    - Acoustic treatment
+    - Custom booth seating
+    - Open kitchen concept
+    - Bar area with custom millwork`,
+    images: ['/portfolio/restaurant.jpg'],
+    duration: '6 weeks',
+    cost: '$45,000',
+    location: 'New York, NY'
+  }
+};
+
+export function getStaticPaths() {
+  return [
+    {params: {project: 'modern-kitchen'}},
+    {params: {project: 'luxury-bathroom'}},
+    {params: {project: 'restaurant-design'}}
+  ];
+}
+
+const { project } = Astro.params;
+const projectData = projects[project];
+---
+
+<Layout title={`RemodelPro - ${projectData.title}`}>
+  <main class="pt-20">
+    <div class="container mx-auto px-4 py-12">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-primary mb-6" data-aos="fade-up">
+          {projectData.title}
+        </h1>
+        
+        <div class="mb-8" data-aos="fade-up" data-aos-delay="100">
+          <img 
+            src={projectData.images[0]} 
+            alt={projectData.title}
+            class="w-full h-[400px] object-cover rounded-lg shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="font-bold text-primary mb-2">Duration</h3>
+            <p>{projectData.duration}</p>
+          </div>
+          <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="250">
+            <h3 class="font-bold text-primary mb-2">Investment</h3>
+            <p>{projectData.cost}</p>
+          </div>
+          <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="font-bold text-primary mb-2">Location</h3>
+            <p>{projectData.location}</p>
+          </div>
+        </div>
+
+        <div class="prose max-w-none" data-aos="fade-up" data-aos-delay="350">
+          <p class="text-gray-600 whitespace-pre-line">
+            {projectData.fullDescription}
+          </p>
+        </div>
+
+        <div class="mt-8">
+          <a 
+            href="/#portfolio" 
+            class="inline-block bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            Back to Portfolio
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

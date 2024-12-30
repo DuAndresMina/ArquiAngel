@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section id="home" class="relative min-h-screen flex items-center pt-16">
+  <!-- Background image with overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/hero-bg.jpg" 
+      alt="Modern interior design" 
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl" data-aos="fade-up">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+        Transform Your Space Into Something Extraordinary
+      </h1>
+      <p class="text-xl text-gray-200 mb-8">
+        Professional remodeling services for homes, apartments, restaurants, and commercial spaces.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a 
+          href="#services" 
+          class="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-lg transition-colors"
+        >
+          Our Services
+        </a>
+        <a 
+          href="#contact" 
+          class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-lg transition-colors"
+        >
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

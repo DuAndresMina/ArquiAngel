@@ -1,0 +1,78 @@
+---
+const services = [
+  {
+    title: 'Basic Service',
+    price: '$5,000',
+    features: [
+      'Small space remodeling',
+      'Paint and flooring updates',
+      'Basic lighting improvements',
+      '1-2 weeks completion time',
+    ],
+    description: 'Perfect for basic home updates and small improvements.',
+  },
+  {
+    title: 'Enhanced Service',
+    price: '$8,000',
+    features: [
+      'Advanced remodeling',
+      'Kitchen and bathroom renovation',
+      'Quality materials included',
+      'Interior design consultation',
+    ],
+    description: 'Comprehensive renovation package for complete room transformations.',
+  },
+  {
+    title: 'Premium Service',
+    price: '$15,000',
+    features: [
+      'Complete space redesign',
+      'Structural modifications',
+      'High-end materials',
+      'Professional interior design',
+    ],
+    description: 'Full-scale renovation with premium materials and expert design.',
+  },
+];
+---
+
+<section id="services" class="py-20 bg-neutral">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-primary mb-4">Our Services</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Choose the perfect remodeling package for your needs
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div 
+          class="bg-white rounded-lg shadow-lg p-8 transition-transform hover:-translate-y-1"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <h3 class="text-2xl font-bold text-primary mb-4">{service.title}</h3>
+          <p class="text-3xl font-bold text-secondary mb-6">{service.price}</p>
+          <ul class="space-y-3 mb-6">
+            {service.features.map(feature => (
+              <li class="flex items-center text-gray-600">
+                <svg class="w-5 h-5 text-secondary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-600 mb-6">{service.description}</p>
+          <a 
+            href="#contact" 
+            class="block text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            Get Started
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
