@@ -2,15 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import Features from '../components/Features.astro';
 import Portfolio from '../components/Portfolio.astro';
+import PaymentMethods from '../components/PaymentMethods.astro';
 import Contact from '../components/Contact.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 ---
 
-<Layout title="RemodelPro - Professional Remodeling Services">
+<Layout title="RemodelPro - Servicios Profesionales de Remodelación">
   <main>
     <Hero />
+    <Features />
     <Services />
     <Portfolio />
+    <PaymentMethods />
     <Contact />
+    <WhatsAppButton />
   </main>
 </Layout>

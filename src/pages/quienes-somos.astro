@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: "Misión",
+    content: "Transformar espacios y mejorar la calidad de vida de nuestros clientes a través de soluciones de remodelación innovadoras, sostenibles y de alta calidad, manteniendo los más altos estándares de servicio y profesionalismo en Colombia.",
+    image: "/about/mision.jpg"
+  },
+  {
+    title: "Visión",
+    content: "Ser la empresa líder en remodelación y diseño de espacios en Colombia, reconocida por nuestra excelencia, innovación y compromiso con la satisfacción del cliente, expandiendo nuestra presencia a nivel nacional mientras mantenemos nuestros valores de calidad y servicio.",
+    image: "/about/vision.jpg"
+  },
+  {
+    title: "Propósito",
+    content: "Crear espacios que inspiren, funcionen y perduren, contribuyendo al bienestar de las familias y empresas colombianas a través de soluciones de remodelación que superan expectativas.",
+    image: "/about/proposito.jpg"
+  }
+];
+---
+
+<Layout title="RemodelPro - Quiénes Somos">
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center">
+      <div class="absolute inset-0">
+        <img 
+          src="/about/hero.jpg" 
+          alt="RemodelPro Team" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+      <div class="relative text-center text-white">
+        <h1 class="text-5xl font-bold mb-4" data-aos="fade-up">Quiénes Somos</h1>
+        <p class="text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+          15 años transformando espacios y creando hogares perfectos
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Sections -->
+    <div class="container mx-auto px-4 py-16">
+      <div class="space-y-24">
+        {sections.map((section, index) => (
+          <div 
+            class={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+            data-aos="fade-up"
+          >
+            <div class="lg:w-1/2">
+              <img 
+                src={section.image} 
+                alt={section.title}
+                class="rounded-lg shadow-lg w-full h-[400px] object-cover"
+              />
+            </div>
+            <div class="lg:w-1/2">
+              <h2 class="text-3xl font-bold text-primary mb-6">{section.title}</h2>
+              <p class="text-gray-600 leading-relaxed text-lg">{section.content}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
