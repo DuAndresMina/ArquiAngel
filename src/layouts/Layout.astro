@@ -21,6 +21,36 @@ const { title } = Astro.props;
     <title>{title}</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+    
+    <script>
+      window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": { "background": "#000", "text": "#fff" },
+            "button": { "background": "#f1d600", "text": "#000" }
+          },
+          "theme": "classic",
+          "content": {
+            "message": "Este sitio utiliza cookies para mejorar su experiencia.",
+            "dismiss": "Aceptar",
+            "link": "Leer más",
+            "href": "/politica-de-cookies"
+          },
+          "onInitialise": function(status) {
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (didConsent) {
+              // Activar Google Tag Manager aquí
+              dataLayer.push({'event': 'consent_given'});
+            }
+          }
+        });
+      });
+    </script>
+    
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -33,7 +63,7 @@ const { title } = Astro.props;
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-   
+
     <Navbar />
     <slot />
     <Footer />
