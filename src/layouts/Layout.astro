@@ -21,35 +21,9 @@ const { title } = Astro.props;
     <title>{title}</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+    
 
-    
-    <script>
-      window.addEventListener("load", function(){
-        window.cookieconsent.initialise({
-          "palette": {
-            "popup": { "background": "#000", "text": "#fff" },
-            "button": { "background": "#f1d600", "text": "#000" }
-          },
-          "theme": "classic",
-          "content": {
-            "message": "Este sitio utiliza cookies para mejorar su experiencia.",
-            "dismiss": "Aceptar",
-            "link": "Leer más",
-            "href": "/politica-de-cookies"
-          },
-          "onInitialise": function(status) {
-            var type = this.options.type;
-            var didConsent = this.hasConsented();
-            if (didConsent) {
-              // Activar Google Tag Manager aquí
-              dataLayer.push({'event': 'consent_given'});
-            }
-          }
-        });
-      });
-    </script>
-    
+
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -63,6 +37,36 @@ const { title } = Astro.props;
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"dark","language":"es","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"AC Arquitectura","website_privacy_policy_url":"https://arqui-angel.vercel.app/politica-privacidad"});
+});
+</script>
+
+<!-- Google Analytics evento de GA4 -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-KRTFKSJ72M"></script>
+<script type="text/plain" data-cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KRTFKSJ72M');
+</script>
+<!-- end of Google Analytics evento de GA4-->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
+
+
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+<a href="#" id="open_preferences_center">Update cookies preferences</a>
 
     <Navbar />
     <slot />
