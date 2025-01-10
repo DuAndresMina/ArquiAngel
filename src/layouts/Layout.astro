@@ -21,9 +21,6 @@ const { title } = Astro.props;
     <title>{title}</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    
-
-
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -53,7 +50,10 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-KRTFKSJ72M');
+  gtag('config', 'G-KRTFKSJ72M',
+  {'disable_geo_location': false,
+
+  });
 </script>
 <!-- end of Google Analytics evento de GA4-->
 
@@ -66,7 +66,6 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
 
 <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
-<a href="#" id="open_preferences_center">Update cookies preferences</a>
 
     <Navbar />
     <slot />
