@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import 'photoswipe/style.css';
+
+const services = {
+  'basic-service': {
+    title: 'Basic Service',
+    description: 'Perfect for basic home updates and small improvements.',
+    whatsappMessage: "Hola, me gustaría obtener más información sobre el servicio básico de remodelación.",
+    fullDescription: `Our Basic Service package is designed for homeowners looking to refresh and update their spaces without major structural changes. 
+    This service is perfect for quick renovations and essential improvements that can transform your space within a short timeframe.
+    
+    Our Basic Service includes:
+    - Professional consultation and planning
+    - Paint and wallpaper application
+    - Flooring updates and repairs
+    - Basic lighting fixture installation
+    - Minor carpentry work
+    - Basic plumbing fixture updates
+    - Quality material selection assistance
+    - Project timeline: 1-2 weeks`,
+    features: [
+      'Initial consultation and design planning',
+      'Material selection guidance',
+      'Professional installation',
+      'Quality assurance inspection',
+      'Basic warranty coverage'
+    ],
+    images: [
+      '/services/basic/1.jpg',
+      '/services/basic/2.jpg',
+      '/services/basic/3.jpg',
+      '/services/basic/4.jpg'
+    ],
+    video: '/services/basic/overview.mp4'
+  },
+  'enhanced-service': {
+    title: 'Enhanced Service',
+    description: 'Comprehensive renovation package for complete room transformations.',
+    whatsappMessage: "Hola, me gustaría obtener más información sobre el servicio mejorado de remodelación.",
+    fullDescription: `The Enhanced Service package offers a comprehensive renovation solution for those seeking significant improvements to their spaces. 
+    This service combines quality craftsmanship with enhanced design elements to create stunning transformations.
+    
+    Our Enhanced Service includes:
+    - Detailed design consultation
+    - Complete room renovations
+    - Custom cabinetry options
+    - Advanced lighting design
+    - Premium material selection
+    - Plumbing and electrical updates
+    - Project management
+    - Project timeline: 2-4 weeks`,
+    features: [
+      'Professional design consultation',
+      'Custom solutions and modifications',
+      'Premium material options',
+      'Project management',
+      'Extended warranty coverage'
+    ],
+    images: [
+      '/services/enhanced/1.jpg',
+      '/services/enhanced/2.jpg',
+      '/services/enhanced/3.jpg',
+      '/services/enhanced/4.jpg'
+    ],
+    video: '/services/enhanced/overview.mp4'
+  },
+  'premium-service': {
+    title: 'Premium Service',
+    description: 'Full-scale renovation with premium materials and expert design.',
+    whatsappMessage: "Hola, me gustaría obtener más información sobre el servicio premium de remodelación.",
+    fullDescription: `Our Premium Service represents the pinnacle of home renovation excellence. 
+    This comprehensive package includes everything needed for a complete transformation of your space, 
+    with the highest quality materials and expert craftsmanship.
+    
+    Our Premium Service includes:
+    - Comprehensive design and planning
+    - Architectural modifications
+    - Custom-built solutions
+    - High-end material selection
+    - Smart home integration
+    - Full project management
+    - Premium finishes and details
+    - Project timeline: 4-8 weeks`,
+    features: [
+      'Exclusive design consultation',
+      'Architectural planning',
+      'Premium materials and finishes',
+      'Dedicated project manager',
+      'Comprehensive warranty package'
+    ],
+    images: [
+      '/services/premium/1.jpg',
+      '/services/premium/2.jpg',
+      '/services/premium/3.jpg',
+      '/services/premium/4.jpg'
+    ],
+    video: '/services/premium/overview.mp4'
+  }
+};
+
+export function getStaticPaths() {
+  return [
+    {params: {service: 'basic-service'}},
+    {params: {service: 'enhanced-service'}},
+    {params: {service: 'premium-service'}}
+  ];
+}
+
+const { service } = Astro.params;
+const serviceData = services[service];
+---
+
+<Layout title={`AC Arquitectura - ${serviceData.title}`}>
+  <main class="pt-20">
+    <div class="container mx-auto px-4 py-12">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-primary mb-6" data-aos="fade-up">
+          {serviceData.title}
+        </h1>
+        
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
+          {serviceData.images.map((image, index) => (
+            <a
+              href={image}
+              data-pswp-width="1600"
+              data-pswp-height="1000"
+              class={`gallery-item ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+            >
+              <img 
+                src={image}
+                alt={`${serviceData.title} - Image ${index + 1}`}
+                class={`w-full h-full object-cover rounded-lg ${index === 0 ? 'min-h-[400px]' : 'h-48'}`}
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+            </a>
+          ))}
+        </div>
+
+        {serviceData.video && (
+          <div class="mb-8" data-aos="fade-up" data-aos-delay="150">
+            <video
+              class="w-full rounded-lg"
+              controls
+              poster={serviceData.images[0]}
+            >
+              <source src={serviceData.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+
+        <div class="prose max-w-none" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-gray-600 whitespace-pre-line mb-8">
+            {serviceData.fullDescription}
+          </p>
+
+          <h2 class="text-2xl font-bold text-primary mb-4">Key Features</h2>
+          <ul class="space-y-2 mb-8">
+            {serviceData.features.map(feature => (
+              <li class="flex items-center text-gray-600">
+                <svg class="w-5 h-5 text-secondary mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex gap-4 mt-8">
+          <a 
+            href="/#contact" 
+            class="flex-1 text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            Get Started
+          </a>
+          <a 
+            href="/#services" 
+            class="flex-1 text-center bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            Back to Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <WhatsAppButton message={serviceData.whatsappMessage} />
+</Layout>
+
+<script>
+  import PhotoSwipe from 'photoswipe';
+  
+  const galleryElements = document.querySelectorAll('.gallery-item');
+  let gallery = null;
+
+  galleryElements.forEach((el, index) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const items = Array.from(galleryElements).map(element => ({
+        src: element.href,
+        w: parseInt(element.dataset.pswpWidth, 10),
+        h: parseInt(element.dataset.pswpHeight, 10)
+      }));
+
+      gallery = new PhotoSwipe({
+        dataSource: items,
+        index: index,
+        closeOnVerticalDrag: true,
+        wheelToZoom: false,
+      });
+      
+      gallery.init();
+    });
+  });
+</script>
