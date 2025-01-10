@@ -2,7 +2,6 @@
 const services = [
   {
     title: 'Basic Service',
-    price: '$5,000',
     features: [
       'Small space remodeling',
       'Paint and flooring updates',
@@ -10,10 +9,10 @@ const services = [
       '1-2 weeks completion time',
     ],
     description: 'Perfect for basic home updates and small improvements.',
+    slug: 'basic-service'
   },
   {
     title: 'Enhanced Service',
-    price: '$8,000',
     features: [
       'Advanced remodeling',
       'Kitchen and bathroom renovation',
@@ -21,10 +20,10 @@ const services = [
       'Interior design consultation',
     ],
     description: 'Comprehensive renovation package for complete room transformations.',
+    slug: 'enhanced-service'
   },
   {
     title: 'Premium Service',
-    price: '$15,000',
     features: [
       'Complete space redesign',
       'Structural modifications',
@@ -32,6 +31,7 @@ const services = [
       'Professional interior design',
     ],
     description: 'Full-scale renovation with premium materials and expert design.',
+    slug: 'premium-service'
   },
 ];
 ---
@@ -53,7 +53,6 @@ const services = [
           data-aos-delay={index * 100}
         >
           <h3 class="text-2xl font-bold text-primary mb-4">{service.title}</h3>
-          <p class="text-3xl font-bold text-secondary mb-6">{service.price}</p>
           <ul class="space-y-3 mb-6">
             {service.features.map(feature => (
               <li class="flex items-center text-gray-600">
@@ -65,12 +64,20 @@ const services = [
             ))}
           </ul>
           <p class="text-gray-600 mb-6">{service.description}</p>
-          <a 
-            href="#contact" 
-            class="block text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-colors"
-          >
-            Get Started
-          </a>
+          <div class="flex gap-4">
+            <a 
+              href="#contact" 
+              class="flex-1 text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-colors"
+            >
+              Get Started
+            </a>
+            <a 
+              href={`/services/${service.slug}`} 
+              class="flex-1 text-center bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
         </div>
       ))}
     </div>

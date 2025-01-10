@@ -1,8 +1,16 @@
 ---
+interface Props {
+  message?: string;
+}
+
+const { message = "Hola, me gustaría obtener más información sobre sus servicios." } = Astro.props;
+
+const whatsappNumber = "573001234567";
+const encodedMessage = encodeURIComponent(message);
 ---
 
 <a
-  href="https://wa.me/573001234567"
+  href={`https://wa.me/${whatsappNumber}?text=${encodedMessage}`}
   class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-colors z-50"
   target="_blank"
   rel="noopener noreferrer"
