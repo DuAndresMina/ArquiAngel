@@ -7,7 +7,6 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4000;
 
 app.use(cors());
 
@@ -15,6 +14,10 @@ app.use(cors());
 // Middleware para parsear datos del formulario
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.listen(process.env.PORT, () => {
+  console.log(`Servidor ejecutándose en ${process.env.PORT}`);
+});
 
 // Ruta para el envío de correos
 app.post('/send-email', async (req, res) => {
