@@ -2,7 +2,7 @@
     "redirects": [
       {
         "source": "/(.*)",
-        "destination": "https://www.acarquitectura.com.co/",
+        "destination": "acarquitectura.com.co",
         "permanent": true
       }
     ]
