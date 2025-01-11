@@ -2,6 +2,9 @@
     "redirects": [
       {
         "source": "/(.*)",
+        "has": [
+          { "type": "host", "value": "arqui-angel.vercel.app" }
+        ],
         "destination": "https://www.acarquitectura.com.co/$1",
         "permanent": true
       }
