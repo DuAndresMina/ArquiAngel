@@ -1,9 +1,9 @@
 <section id="contact" class="py-20 bg-neutral">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-primary mb-4">Contact Us</h2>
+      <h2 class="text-4xl font-bold text-primary mb-4">Contáctenos</h2>
       <p class="text-gray-600 max-w-2xl mx-auto">
-        Get in touch with us for a free consultation
+        Pongase en contacto con nosotros para una consulta personalizada vía correo
       </p>
     </div>
 
@@ -14,7 +14,7 @@
       >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="name" class="block text-gray-700 mb-2">Name</label>
+            <label for="name" class="block text-gray-700 mb-2">Nombre</label>
             <input
               type="text"
               id="name"
@@ -24,18 +24,37 @@
             />
           </div>
           <div>
-            <label for="email" class="block text-gray-700 mb-2">Email</label>
+            <label for="number"  class="block text-gray-700 mb-2">Número teléfonico</label>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type="number"
+              id="number"
+              name="number"
               required
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-colors"
             />
           </div>
         </div>
         <div>
-          <label for="service" class="block text-gray-700 mb-2">Service Type</label>
+          <label for="email" class="block text-gray-700 mb-2">Correo</label>
+<input
+  type="email"
+  id="email"
+  name="email"
+  required
+  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-colors"
+  onfocusout="validateEmail(this.value)"
+/>
+<script>
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!re.test(String(email).toLowerCase())) {
+    alert("Please enter a valid email address.");
+  }
+}
+</script>
+        </div>
+        <div>
+          <label for="service" class="block text-gray-700 mb-2">Tipo de servicio</label>
           <select
             id="service"
             name="service"
@@ -50,7 +69,7 @@
           </select>
         </div>
         <div>
-          <label for="message" class="block text-gray-700 mb-2">Message</label>
+          <label for="message" class="block text-gray-700 mb-2">Mensaje</label>
           <textarea
             id="message"
             name="message"
@@ -63,7 +82,7 @@
           type="submit"
           class="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
         >
-          Send Message
+          Enviar mensaje
         </button>
       </form>
     </div>

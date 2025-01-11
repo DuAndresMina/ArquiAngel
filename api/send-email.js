@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Método no permitido' });
   }
 
-  const { name, email, service, message } = req.body;
+  const { name, email, service, message, number } = req.body;
 
   const transporter = nodemailer.createTransport({
     host: process.env.HOST,
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     from: process.env.GMAIL_USER,
     to: process.env.GMAIL_USER,
     subject: `Consulta de ${name} - ${service}`,
-    text: `Nombre: ${name}\nEmail: ${email}\nServicio: ${service}\nMensaje: ${message}`,
+    text: `Nombre: ${name}\nEmail: ${email}\nServicio:\Número: ${number} ${service}\nMensaje: ${message}`,
   };
 
   try {
