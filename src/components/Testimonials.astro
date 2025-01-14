@@ -1,0 +1,272 @@
+---
+const testimonials = [
+  {
+    id: 'story-1',
+    clientName: 'Ana María Rodríguez',
+    projectType: 'Remodelación de Cocina',
+    thumbnail: '/testimonials/ana-thumb.jpg',
+    content: {
+      text: "La transformación de mi cocina superó todas mis expectativas. El equipo de RemodelPro fue increíblemente profesional y detallista. Ahora tengo la cocina de mis sueños.",
+      images: [
+        '/testimonials/ana/before-1.jpg',
+        '/testimonials/ana/after-1.jpg',
+        '/testimonials/ana/detail-1.jpg'
+      ],
+      video: '/testimonials/ana/testimonial.mp4'
+    }
+  },
+  {
+    id: 'story-2',
+    clientName: 'Carlos Mendoza',
+    projectType: 'Renovación de Baño',
+    thumbnail: '/testimonials/carlos-thumb.jpg',
+    content: {
+      text: "Un trabajo excepcional en la renovación de mi baño. El diseño moderno y la atención al detalle son impresionantes. Totalmente recomendado.",
+      images: [
+        '/testimonials/carlos/before-1.jpg',
+        '/testimonials/carlos/after-1.jpg',
+        '/testimonials/carlos/detail-1.jpg'
+      ],
+      video: '/testimonials/carlos/testimonial.mp4'
+    }
+  },
+  {
+    id: 'story-3',
+    clientName: 'Restaurant La Plaza',
+    projectType: 'Diseño de Interiores',
+    thumbnail: '/testimonials/plaza-thumb.jpg',
+    content: {
+      text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
+      images: [
+        '/testimonials/plaza/before-1.jpg',
+        '/testimonials/plaza/after-1.jpg',
+        '/testimonials/plaza/detail-1.jpg'
+      ],
+      video: '/testimonials/plaza/testimonial.mp4'
+    }
+  }
+];
+---
+
+<section class="py-20 bg-neutral">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-primary mb-4">Testimonios</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Descubre las historias de éxito de nuestros clientes satisfechos
+      </p>
+    </div>
+
+    <!-- Instagram-style Stories -->
+    <div class="max-w-screen-lg mx-auto" data-aos="fade-up">
+      <!-- Stories Container -->
+      <div class="flex justify-center">
+        <div class="grid grid-flow-col auto-cols-max gap-4 md:gap-8 overflow-x-auto py-4 px-4 snap-x scrollbar-hide">
+          {testimonials.map((story) => (
+            <div class="snap-start">
+              <button 
+                class="story-trigger group focus:outline-none"
+                data-story-id={story.id}
+              >
+                <!-- Story Circle -->
+                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-0.5 cursor-pointer transition-transform duration-300 hover:scale-105">
+                  <div class="w-full h-full rounded-full border-2 border-white p-0.5 bg-white">
+                    <img 
+                      src={story.thumbnail} 
+                      alt={story.clientName}
+                      class="w-full h-full rounded-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <!-- Story Name -->
+                <p class="text-center text-sm mt-2 text-gray-700 font-medium truncate max-w-[100px]">
+                  {story.clientName}
+                </p>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Modal -->
+  <div id="story-modal" class="fixed inset-0 bg-black/95 z-50 hidden">
+    <div class="relative w-full h-full flex items-center justify-center">
+      <!-- Close Button -->
+      <button 
+        id="close-story" 
+        class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-primary z-10 p-2 transition-colors"
+        aria-label="Close story"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Story Content Container -->
+      <div class="w-full max-w-4xl mx-auto h-full md:h-auto md:max-h-[85vh] bg-white rounded-none md:rounded-xl overflow-hidden">
+        <div id="story-content" class="h-full md:h-auto overflow-y-auto">
+          <!-- Content will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    /* Distribución para móvil (predeterminado) */
+#story-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+  </style>
+  
+
+<script>
+const testimonials = {
+  'story-1': {
+    clientName: 'Ana María Rodríguez',
+    projectType: 'Remodelación de Cocina',
+    content: {
+      text: "La transformación de mi cocina superó todas mis expectativas. El equipo de RemodelPro fue increíblemente profesional y detallista. Ahora tengo la cocina de mis sueños.",
+      images: [
+        '/testimonials/ana/before-1.JPG',
+        '/testimonials/ana/after-1.JPG',
+        '/testimonials/ana/detail-1.JPG'
+      ],
+      video: '/testimonials/ana/testimonial.mp4'
+    }
+  },
+  'story-2': {
+    clientName: 'Carlos Mendoza',
+    projectType: 'Renovación de Baño',
+    content: {
+      text: "Un trabajo excepcional en la renovación de mi baño. El diseño moderno y la atención al detalle son impresionantes. Totalmente recomendado.",
+      images: [
+        '/testimonials/carlos/before-1.jpg',
+        '/testimonials/carlos/after-1.jpg',
+        '/testimonials/carlos/detail-1.jpg'
+      ],
+      video: '/testimonials/carlos/testimonial.mp4'
+    }
+  },
+  'story-3': {
+    clientName: 'Restaurant La Plaza',
+    projectType: 'Diseño de Interiores',
+    content: {
+      text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
+      images: [
+        '/testimonials/plaza/before-1.jpg',
+        '/testimonials/plaza/after-1.jpg',
+        '/testimonials/plaza/detail-1.jpg'
+      ],
+      video: '/testimonials/plaza/testimonial.mp4'
+    }
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('story-modal');
+  const storyContent = document.getElementById('story-content');
+  const closeButton = document.getElementById('close-story');
+  const storyTriggers = document.querySelectorAll('.story-trigger');
+
+  function showStory(storyId) {
+    const story = testimonials[storyId];
+    if (!story) return;
+
+    const content = `
+  <div id="story-content" class="p-4 md:p-8 flex flex-col md:flex-row bg-gray-100 rounded-lg shadow-lg">
+  <!-- Contenido textual -->
+  <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 text-center md:text-left">
+    <div class="w-full">
+      <div class="flex items-center space-x-4 mb-4">
+        <div class="w-12 h-12 rounded-full overflow-hidden">
+          <img 
+            src="/testimonials/${storyId}-thumb.jpg" 
+            alt="${story.clientName}"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-primary">${story.clientName}</h3>
+          <p class="text-gray-600">${story.projectType}</p>
+        </div>
+      </div>
+      <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+        ${story.content.text}
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenido multimedia -->
+  <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6">
+    <div class="w-full">
+      <!-- Video -->
+      ${story.content.video ? `
+        <div class="video-container rounded-lg overflow-hidden shadow-lg mb-4">
+          <video controls playsinline class="w-full h-auto">
+            <source src="${story.content.video}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      ` : ''}
+
+      <!-- Imágenes -->
+      <div class="grid grid-cols-2 gap-4">
+        ${story.content.images.map(img => `
+          <img 
+            src="${img}" 
+            alt="Proyecto ${story.clientName}" 
+            loading="lazy"
+            class="w-full h-auto rounded-lg shadow-md"
+          >
+        `).join('')}
+      </div>
+    </div>
+  </div>
+</div>
+
+`;
+
+
+    storyContent.innerHTML = content;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  storyTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const storyId = trigger.dataset.storyId;
+      showStory(storyId);
+    });
+  });
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  closeButton.addEventListener('click', closeModal);
+
+  // Close modal when clicking outside
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+});
+</script>
