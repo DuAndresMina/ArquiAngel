@@ -1,0 +1,1 @@
+import{P as c}from"./photoswipe.esm.DMuSZjSc.js";const t=document.querySelectorAll(".gallery-item");let r=null;t.forEach((a,l)=>{a.addEventListener("click",o=>{o.preventDefault();const s=Array.from(t).map(e=>({src:e.href,w:parseInt(e.dataset.pswpWidth,10),h:parseInt(e.dataset.pswpHeight,10)}));r=new c({dataSource:s,index:l,closeOnVerticalDrag:!0,wheelToZoom:!1}),r.init()})});

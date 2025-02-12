@@ -1,8 +1,10 @@
+// filepath: /c:/Users/Familia/Downloads/project-bolt-sb1-gbcpcwft (1)/project/api/send-email.js
 import express from 'express';
 import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import compression from 'compression';
 
 dotenv.config();
 
@@ -10,6 +12,14 @@ const app = express();
 
 app.use(cors());
 
+// Habilita la compresión
+app.use(compression());
+
+// Configura los encabezados de caché para recursos estáticos
+app.use(express.static(path.join(__dirname, 'dist'), {
+  maxAge: '1y', // Cachea los recursos estáticos por un año
+  etag: false
+}));
 
 // Middleware para parsear datos del formulario
 app.use(bodyParser.urlencoded({ extended: true }));
