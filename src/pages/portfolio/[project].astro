@@ -4,16 +4,16 @@ import 'photoswipe/style.css';
 
 const projects = {
   'modern-kitchen': {
-    title: 'Modern Kitchen Renovation',
-    description: 'Complete kitchen transformation with custom cabinets and island.',
-    fullDescription: `Our modern kitchen renovation project showcases the perfect blend of functionality and style. 
-    We completely transformed this space with custom-built cabinets, a spacious island, and state-of-the-art appliances.
-    The project included:
-    - Custom cabinetry with soft-close mechanisms
-    - Quartz countertops
-    - Modern lighting fixtures
-    - Energy-efficient appliances
-    - Custom backsplash`,
+    title: 'Renovación de Cocina Moderna',
+    description: 'Transformación completa de la cocina con gabinetes y una isla personalizados.',
+    fullDescription: `Nuestro proyecto de renovación de cocina moderna muestra la combinación perfecta de funcionalidad y estilo. 
+    Transformamos completamente este espacio con gabinetes personalizados, una isla espaciosa y electrodomésticos de última generación.
+    El proyecto incluyó:
+    - Gabinetes personalizados con mecanismos de cierre suave
+    - Encimeras de cuarzo
+    - Lámparas modernas
+    - Electrodomésticos de bajo consumo
+    - Backsplash personalizado`,
     images: [
       '/portfolio/kitchen/1.jpg',
       '/portfolio/kitchen/2.jpg',
@@ -22,21 +22,20 @@ const projects = {
       '/portfolio/kitchen/5.jpg'
     ],
     video: '/portfolio/kitchen/walkthrough.mp4',
-    duration: '4 weeks',
-    cost: '$25,000',
-    location: 'San Francisco, CA'
+    duration: '4 semanas',
+    location: '*Ubicación Confidencial*'
   },
   'luxury-bathroom': {
-    title: 'Luxury Bathroom Remodel',
-    description: 'Spa-like bathroom renovation with premium fixtures.',
-    fullDescription: `This luxury bathroom remodel transformed an ordinary bathroom into a spa-like retreat.
-    The renovation focused on creating a serene atmosphere with high-end materials and fixtures.
-    Key features include:
-    - Freestanding soaking tub
-    - Custom glass shower enclosure
-    - Heated flooring
-    - Double vanity with marble countertops
-    - LED mirror with anti-fog technology`,
+    title: 'Remodelación de Baño de Lujo',
+    description: 'Renovación de baño estilo spa con accesorios premium.',
+    fullDescription: `Esta remodelación de baño de lujo transformó un baño ordinario en un retiro estilo spa.
+    La renovación se centró en crear una atmósfera serena con materiales y accesorios de alta gama.
+    Las características clave incluyen:
+    - Tina de baño independiente
+    - Ducha de vidrio personalizada
+    - Suelo radiante
+    - Doble lavabo con encimeras de mármol
+    - Espejo LED con tecnología anti-vaho`,
     images: [
       '/portfolio/bathroom/1.jpg',
       '/portfolio/bathroom/2.jpg',
@@ -45,21 +44,20 @@ const projects = {
       '/portfolio/bathroom/5.jpg'
     ],
     video: '/portfolio/bathroom/walkthrough.mp4',
-    duration: '3 weeks',
-    cost: '$18,000',
-    location: 'Los Angeles, CA'
+    duration: '3 semanas',
+    location: '*Ubicación Confidencial*'
   },
   'restaurant-design': {
-    title: 'Restaurant Interior Design',
-    description: 'Contemporary restaurant space with custom lighting.',
-    fullDescription: `A complete restaurant renovation that transformed the space into a modern dining destination.
-    The project focused on creating an inviting atmosphere while maximizing seating capacity.
-    Features include:
-    - Custom lighting design
-    - Acoustic treatment
-    - Custom booth seating
-    - Open kitchen concept
-    - Bar area with custom millwork`,
+    title: 'Diseño de Interiores de Restaurante',
+    description: 'Espacio de restaurante contemporáneo con iluminación personalizada.',
+    fullDescription: `Una renovación completa del restaurante que transformó el espacio en un destino gastronómico moderno.
+    El proyecto se centró en crear una atmósfera acogedora mientras se maximiza la capacidad de asientos.
+    Las características incluyen:
+    - Diseño de iluminación personalizado
+    - Tratamiento acústico
+    - Asientos de cabina personalizados
+    - Concepto de cocina abierta
+    - Área de bar con carpintería personalizada`,
     images: [
       '/portfolio/restaurant/1.jpg',
       '/portfolio/restaurant/2.jpg',
@@ -68,9 +66,8 @@ const projects = {
       '/portfolio/restaurant/5.jpg'
     ],
     video: '/portfolio/restaurant/walkthrough.mp4',
-    duration: '6 weeks',
-    cost: '$45,000',
-    location: 'New York, NY'
+    duration: '6 semanas',
+    location: '*Ubicación Confidencial*'
   }
 };
 
@@ -94,7 +91,7 @@ const projectData = projects[project];
           {projectData.title}
         </h1>
         
-        <!-- Gallery Grid -->
+        <!-- Galería de Imágenes -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
           {projectData.images.map((image, index) => (
             <a
@@ -105,7 +102,7 @@ const projectData = projects[project];
             >
               <img 
                 src={image}
-                alt={`${projectData.title} - Image ${index + 1}`}
+                alt={`${projectData.title} - Imagen ${index + 1}`}
                 class={`w-full h-full object-cover rounded-lg ${index === 0 ? 'min-h-[400px]' : 'h-48'}`}
                 loading={index === 0 ? 'eager' : 'lazy'}
               />
@@ -119,7 +116,7 @@ const projectData = projects[project];
                 poster={projectData.images[0]}
               >
                 <source src={projectData.video} type="video/mp4" />
-                Your browser does not support the video tag.
+                Tu navegador no soporta la etiqueta de video.
               </video>
             </div>
           )}
@@ -127,15 +124,15 @@ const projectData = projects[project];
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="font-bold text-primary mb-2">Duration</h3>
+            <h3 class="font-bold text-primary mb-2">Duración</h3>
             <p>{projectData.duration}</p>
           </div>
           <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="250">
-            <h3 class="font-bold text-primary mb-2">Investment</h3>
+            <h3 class="font-bold text-primary mb-2">Inversión</h3>
             <p>{projectData.cost}</p>
           </div>
           <div class="bg-neutral p-4 rounded-lg" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="font-bold text-primary mb-2">Location</h3>
+            <h3 class="font-bold text-primary mb-2">Ubicación</h3>
             <p>{projectData.location}</p>
           </div>
         </div>
@@ -151,7 +148,7 @@ const projectData = projects[project];
             href="/#portfolio" 
             class="inline-block bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors"
           >
-            Back to Portfolio
+            Volver al Portafolio
           </a>
         </div>
       </div>
