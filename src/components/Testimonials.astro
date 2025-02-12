@@ -1,50 +1,33 @@
 ---
+// ...existing code...
 const testimonials = [
   {
     id: 'story-1',
-    clientName: 'Ana María Rodríguez',
-    projectType: 'Remodelación de Cocina',
-    thumbnail: '/testimonials/ana-thumb.jpg',
+    clientName: 'José Ramiro',
+    projectType: 'Remodelación de Casa',
     content: {
-      text: "La transformación de mi cocina superó todas mis expectativas. El equipo de RemodelPro fue increíblemente profesional y detallista. Ahora tengo la cocina de mis sueños.",
-      images: [
-        '/testimonials/ana/before-1.jpg',
-        '/testimonials/ana/after-1.jpg',
-        '/testimonials/ana/detail-1.jpg'
-      ],
-      video: '/testimonials/ana/testimonial.mp4'
+      text: "La mejor prueba de nuestro trabajo son nuestros clientes satisfechos.🎤 José Ramiro confió en Arquitectura y Construcción S.A.S. y hoy nos comparte su experiencia. Cada proyecto que realizamos es un compromiso con la calidad, la innovación y la satisfacción de nuestros clientes. 🏗️🏠",
+      video: 'testimonio-1.mp4'
     }
   },
   {
     id: 'story-2',
-    clientName: 'Carlos Mendoza',
-    projectType: 'Renovación de Baño',
-    thumbnail: '/testimonials/carlos-thumb.jpg',
+    clientName: 'Sergio Yamid Herrera',
+    projectType: 'Remodelación de Casa',
     content: {
-      text: "Un trabajo excepcional en la renovación de mi baño. El diseño moderno y la atención al detalle son impresionantes. Totalmente recomendado.",
-      images: [
-        '/testimonials/carlos/before-1.jpg',
-        '/testimonials/carlos/after-1.jpg',
-        '/testimonials/carlos/detail-1.jpg'
-      ],
-      video: '/testimonials/carlos/testimonial.mp4'
+      text: "🔷 La mejor garantía es la satisfacción de nuestros clientes 🔷 Escucha el testimonio de Sergio Yamid Herrera, quien confió en AC Arquitectura y Construcción S.A.S para su proyecto. 🏗️✨",
+      video: 'testimonio-2.mp4'
     }
   },
-  {
-    id: 'story-3',
-    clientName: 'Restaurant La Plaza',
-    projectType: 'Diseño de Interiores',
-    thumbnail: '/testimonials/plaza-thumb.jpg',
-    content: {
-      text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
-      images: [
-        '/testimonials/plaza/before-1.jpg',
-        '/testimonials/plaza/after-1.jpg',
-        '/testimonials/plaza/detail-1.jpg'
-      ],
-      video: '/testimonials/plaza/testimonial.mp4'
-    }
-  }
+  // {
+  //   id: 'story-3',
+  //   clientName: 'Restaurant La Plaza',
+  //   projectType: 'Diseño de Interiores',
+  //   content: {
+  //     text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
+  //     video: '/testimonials/plaza/testimonial.mp4'
+  //   }
+  // }
 ];
 ---
 
@@ -117,57 +100,59 @@ const testimonials = [
 </section>
 
 <style>
-    /* Distribución para móvil (predeterminado) */
-#story-content {
-  display: flex;
-  flex-direction: column;
+  /* Distribución para móvil (predeterminado) */
+  #story-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Mantén la relación de aspecto 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 12px; /* Bordes redondeados */
+  margin: 0 auto; /* Centra el contenedor */
 }
 
-
-  </style>
-  
+/* Ajusta el video para que ocupe todo el contenedor */
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que el video cubra el contenedor sin distorsión */
+}
+</style>
 
 <script>
 const testimonials = {
   'story-1': {
-    clientName: 'Ana María Rodríguez',
-    projectType: 'Remodelación de Cocina',
+    clientName: 'José Ramiro',
+    projectType: 'Remodelación de Casa',
     content: {
-      text: "La transformación de mi cocina superó todas mis expectativas. El equipo de RemodelPro fue increíblemente profesional y detallista. Ahora tengo la cocina de mis sueños.",
-      images: [
-        '/testimonials/ana/before-1.JPG',
-        '/testimonials/ana/after-1.JPG',
-        '/testimonials/ana/detail-1.JPG'
-      ],
-      video: '/testimonials/ana/testimonial.mp4'
+      text: "La mejor prueba de nuestro trabajo son nuestros clientes satisfechos🎤 José Ramiro confió en Arquitectura y Construcción S.A.S. y hoy nos comparte su experiencia. Cada proyecto que realizamos es un compromiso con la calidad, la innovación y la satisfacción de nuestros clientes. 🏗️🏠",
+      video: '/testimonio-1.mp4'
     }
   },
   'story-2': {
-    clientName: 'Carlos Mendoza',
-    projectType: 'Renovación de Baño',
+    clientName: 'Sergio Yamid Herrera',
+    projectType: 'Remodelación de Casa',
     content: {
-      text: "Un trabajo excepcional en la renovación de mi baño. El diseño moderno y la atención al detalle son impresionantes. Totalmente recomendado.",
-      images: [
-        '/testimonials/carlos/before-1.jpg',
-        '/testimonials/carlos/after-1.jpg',
-        '/testimonials/carlos/detail-1.jpg'
-      ],
-      video: '/testimonials/carlos/testimonial.mp4'
+      text: "🔷 La mejor garantía es la satisfacción de nuestros clientes 🔷 Escucha el testimonio de Sergio Yamid Herrera, quien confió en AC Arquitectura y Construcción S.A.S para su proyecto. 🏗️✨",
+      video: 'testimonio-2.mp4'
     }
   },
-  'story-3': {
-    clientName: 'Restaurant La Plaza',
-    projectType: 'Diseño de Interiores',
-    content: {
-      text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
-      images: [
-        '/testimonials/plaza/before-1.jpg',
-        '/testimonials/plaza/after-1.jpg',
-        '/testimonials/plaza/detail-1.jpg'
-      ],
-      video: '/testimonials/plaza/testimonial.mp4'
-    }
-  }
+  // 'story-3': {
+  //   clientName: 'Restaurant La Plaza',
+  //   projectType: 'Diseño de Interiores',
+  //   content: {
+  //     text: "La renovación de nuestro restaurante fue todo un éxito. RemodelPro entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
+  //     video: '/testimonials/plaza/testimonial.mp4'
+  //   }
+  // }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -181,59 +166,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!story) return;
 
     const content = `
-  <div id="story-content" class="p-4 md:p-8 flex flex-col md:flex-row bg-gray-100 rounded-lg shadow-lg">
-  <!-- Contenido textual -->
-  <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 text-center md:text-left">
-    <div class="w-full">
-      <div class="flex items-center space-x-4 mb-4">
-        <div class="w-12 h-12 rounded-full overflow-hidden">
-          <img 
-            src="/testimonials/${storyId}-thumb.jpg" 
-            alt="${story.clientName}"
-            class="w-full h-full object-cover"
-          />
+      <div id="story-content" class="p-4 md:p-8 flex flex-col md:flex-row bg-gray-100 rounded-lg shadow-lg">
+        <!-- Contenido textual -->
+        <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 text-center md:text-left">
+          <div class="w-full">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img 
+                  src="/testimonials/${storyId}-thumb.jpg" 
+                  alt="${story.clientName}"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-primary">${story.clientName}</h3>
+                <p class="text-gray-600">${story.projectType}</p>
+              </div>
+            </div>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+              ${story.content.text}
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 class="text-xl font-bold text-primary">${story.clientName}</h3>
-          <p class="text-gray-600">${story.projectType}</p>
-        </div>
-      </div>
-      <p class="text-gray-700 text-base md:text-lg leading-relaxed">
-        ${story.content.text}
-      </p>
-    </div>
-  </div>
 
-  <!-- Contenido multimedia -->
-  <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6">
-    <div class="w-full">
-      <!-- Video -->
-      ${story.content.video ? `
-        <div class="video-container rounded-lg overflow-hidden shadow-lg mb-4">
-          <video controls playsinline class="w-full h-auto">
-            <source src="${story.content.video}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      ` : ''}
-
-      <!-- Imágenes -->
-      <div class="grid grid-cols-2 gap-4">
-        ${story.content.images.map(img => `
-          <img 
-            src="${img}" 
-            alt="Proyecto ${story.clientName}" 
-            loading="lazy"
-            class="w-full h-auto rounded-lg shadow-md"
-          >
-        `).join('')}
+        <!-- Contenido multimedia -->
+        <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 rounded-lg"> 
+  <div class="w-full">
+    ${story.content.video ? `
+      <div class="video-container"> 
+        <video controls playsinline autoplay muted loop class="w-full h-auto md:w-3/4 rounded-lg "> 
+          <source src="${story.content.video}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
-    </div>
+    ` : ''}
   </div>
 </div>
-
-`;
-
+        </div>
+      </div>
+    `;
 
     storyContent.innerHTML = content;
     modal.classList.remove('hidden');
