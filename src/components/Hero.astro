@@ -28,17 +28,91 @@ import { Image } from 'astro:assets';
       <div class="flex flex-wrap gap-4">
         <a 
           href="#services" 
-          class="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-lg transition-colors"
+          class="btn"
         >
-          Nuestros Servicios
+          <svg width="277" height="62">
+            <defs>
+              <linearGradient id="grad1">
+                <stop offset="0%" stop-color="#F27405"/>
+                <stop offset="100%" stop-color="#F27405" />
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+          </svg>
+          <span>Nuestros Servicios</span>
         </a>
         <a 
           href="/contact" 
-          class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-lg transition-colors"
+          class="btn"
         >
-          Contáctanos
+          <svg width="277" height="62">
+            <defs>
+              <linearGradient id="grad1">
+                <stop offset="0%" stop-color="#F27405"/>
+                <stop offset="100%" stop-color="#F27405" />
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+          </svg>
+          <span>Contáctanos</span>
         </a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+
+  .container {
+    height: 100%;
+    position: absolute;
+    top: 81%; /* Ajusta la posición más abajo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .btn {
+    margin-top: 0; /* Ajusta el margen superior */
+    position: relative;
+    display: inline-block;
+    width: 277px;
+    height: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 0.045em;
+    color: black; /* Cambia el color del texto a negro */
+  }
+
+  .btn svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .btn svg rect {
+    stroke-width: 4;
+    stroke-dasharray: 353, 0;
+    stroke-dashoffset: 0;
+    transition: all 600ms ease;
+  }
+
+  .btn span {
+    background: none; /* Elimina el gradiente de fondo */
+    color: black; /* Cambia el color del texto a negro */
+  }
+
+  .btn:hover svg rect {
+    stroke-width: 4;
+    stroke-dasharray: 196, 543;
+    stroke-dashoffset: 437;
+  }
+</style>
