@@ -5,20 +5,36 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
+  description: string;
+  url: string;
+  image: string;
 }
 
-const { title } = Astro.props;
+const { title, description, url, image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="AC Arquitectura & Construcción S.A.S " />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/solologo.svg" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/acarquitectura-logo.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} </title>
+    <title>{title}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="arquitectura, construcción, remodelación, casas, apartamentos, espacios comerciales" />
+    <meta name="author" content="AC Arquitectura & Construcción S.A.S" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="AC Arquitectura & Construcción S.A.S" />
 
     <!-- Preconnect to important origins -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
