@@ -7,5 +7,7 @@ export default defineConfig({
   adapter: vercel(),
   build: {
     minify: true,
+    outDir: 'dist',
   },
+  publicDir: 'public',
 });
