@@ -3,16 +3,6 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://www.acarquitectura.com.co/</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.acarquitectura.com.co/banner.webp</image:loc>
-      <image:caption>Modern interior design</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://www.acarquitectura.com.co/#services</loc>
     <lastmod>2025-02-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -88,6 +78,10 @@
     <lastmod>2025-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.acarquitectura.com.co/banner.webp</image:loc>
+      <image:caption>Modern interior design</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://www.acarquitectura.com.co/acarquitectura-logo.svg</image:loc>
       <image:caption>AC Arquitectura Logo</image:caption>
