@@ -1,90 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  <url>
-    <loc>https://www.acarquitectura.com.co/#servicios</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/#testimonios</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/contact</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/quienes-somos</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/aviso-legal</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/politica-cookies</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/politica-privacidad</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/services/servicio-basico</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/services/servicio-estandar</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/services/servicio-premium</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- <url>
-    <loc>https://www.acarquitectura.com.co/portfolio/modern-kitchen</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.acarquitectura.com.co/portfolio/luxury-bathroom</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  <url>
-    <loc>https://www.acarquitectura.com.co/portfolio/restaurant-design</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url> -->
-  <url>
-    <loc>https://www.acarquitectura.com.co/</loc>
-    <lastmod>2025-02-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://www.acarquitectura.com.co/</loc>
+<lastmod>2025-02-20T15:04:01+00:00</lastmod>
+<priority>1.00</priority>
+<image:image>
       <image:loc>https://www.acarquitectura.com.co/banner.webp</image:loc>
       <image:caption>Modern interior design</image:caption>
     </image:image>
@@ -115,5 +35,45 @@
       <video:title>Testimonio 3</video:title>
       <video:description>Testimonio de un cliente satisfecho</video:description>
     </video:video>
-  </url>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/contact</loc>
+<lastmod>2025-02-20T15:04:02+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/quienes-somos</loc>
+<lastmod>2025-02-20T15:04:02+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/aviso-legal</loc>
+<lastmod>2025-02-20T15:04:02+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/politica-cookies</loc>
+<lastmod>2025-02-20T15:04:02+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/politica-privacidad</loc>
+<lastmod>2025-02-20T15:04:02+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/services/servicio-basico</loc>
+<lastmod>2025-02-20T15:04:03+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/services/servicio-estandar</loc>
+<lastmod>2025-02-20T15:04:03+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.acarquitectura.com.co/services/servicio-premium</loc>
+<lastmod>2025-02-20T15:04:03+00:00</lastmod>
+<priority>0.80</priority>
+</url>
 </urlset>
