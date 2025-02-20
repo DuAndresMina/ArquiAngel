@@ -1,6 +1,7 @@
 ---
 import '@fontsource/poppins';
-
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
 
 interface Props {
   title: string;
@@ -152,6 +153,8 @@ Servicios profesionales de remodelación de casas, apartamentos y espacios comer
     <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
     <!-- End Cookie Consent by TermsFeed -->
 
+    <Navbar />
+    <Footer />
     <slot />
     <script>
       import AOS from 'aos';
