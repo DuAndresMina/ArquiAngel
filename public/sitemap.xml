@@ -4,37 +4,6 @@
 <loc>https://www.acarquitectura.com.co/</loc>
 <lastmod>2025-02-20T15:04:01+00:00</lastmod>
 <priority>1.00</priority>
-<image:image>
-      <image:loc>https://www.acarquitectura.com.co/banner.webp</image:loc>
-      <image:caption>Modern interior design</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.acarquitectura.com.co/acarquitectura-logo.svg</image:loc>
-      <image:caption>AC Arquitectura Logo</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.acarquitectura.com.co/acarquitectura-logoblanco.webp</image:loc>
-      <image:caption>AC Arquitectura Logo Blanco</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.acarquitectura.com.co/acarquitectura-sinfondo.webp</image:loc>
-      <image:caption>AC Arquitectura Logo Sin Fondo</image:caption>
-    </image:image>
-    <video:video>
-      <video:content_loc>https://www.acarquitectura.com.co/testimonio-1.mp4</video:content_loc>
-      <video:title>Testimonio 1</video:title>
-      <video:description>Testimonio de un cliente satisfecho</video:description>
-    </video:video>
-    <video:video>
-      <video:content_loc>https://www.acarquitectura.com.co/testimonio-2.mp4</video:content_loc>
-      <video:title>Testimonio 2</video:title>
-      <video:description>Testimonio de un cliente satisfecho</video:description>
-    </video:video>
-    <video:video>
-      <video:content_loc>https://www.acarquitectura.com.co/testimonio-3.mp4</video:content_loc>
-      <video:title>Testimonio 3</video:title>
-      <video:description>Testimonio de un cliente satisfecho</video:description>
-    </video:video>
 </url>
 <url>
 <loc>https://www.acarquitectura.com.co/contact</loc>
