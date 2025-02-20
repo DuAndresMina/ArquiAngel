@@ -1,7 +1,6 @@
 ---
 import '@fontsource/poppins';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+
 
 interface Props {
   title: string;
@@ -24,6 +23,18 @@ const { title, description, url, image } = Astro.props;
     <title>AC Arquitectura- Servicios Profesionales de Remodelación</title>
     <meta name="description" content="Diseñamos tus espacios, construimos tus sueños.
     Servicios profesionales de remodelación de casas, apartamentos y espacios comerciales.">
+    
+    <link rel="canonical" href="https://www.acarquitectura.com.co/">
+<link rel="canonical" href="https://www.acarquitectura.com.co/#servicios">
+<link rel="canonical" href="https://www.acarquitectura.com.co/services/servicio-basico">
+<link rel="canonical" href="https://www.acarquitectura.com.co/services/servicio-estandar">
+<link rel="canonical" href="https://www.acarquitectura.com.co/services/servicio-premium">
+<link rel="canonical" href="https://www.acarquitectura.com.co/#testimonios">
+<link rel="canonical" href="https://www.acarquitectura.com.co/contact">
+<link rel="canonical" href="https://www.acarquitectura.com.co/quienes-somos">
+<link rel="canonical" href="https://www.acarquitectura.com.co/aviso-legal">
+<link rel="canonical" href="https://www.acarquitectura.com.co/politica-cookies">
+<link rel="canonical" href="https://www.acarquitectura.com.co/politica-privacidad">
 
     <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://www.acarquitectura.com.co/">
@@ -122,7 +133,7 @@ Servicios profesionales de remodelación de casas, apartamentos y espacios comer
           "preferences_center_close_button_hide": false,
           "page_refresh_confirmation_buttons": false,
           "website_name": "AC Arquitectura",
-          "website_privacy_policy_url": "https://arqui-angel.vercel.app/politica-privacidad"
+          "website_privacy_policy_url": "https://www.acarquitectura.com.co/politica-privacidad"
         });
       });
     </script>
@@ -141,9 +152,7 @@ Servicios profesionales de remodelación de casas, apartamentos y espacios comer
     <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
     <!-- End Cookie Consent by TermsFeed -->
 
-    <Navbar />
     <slot />
-    <Footer />
     <script>
       import AOS from 'aos';
       AOS.init({

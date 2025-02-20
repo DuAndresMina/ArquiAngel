@@ -3,13 +3,19 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://www.acarquitectura.com.co/#services</loc>
+    <loc>https://www.acarquitectura.com.co/#servicios</loc>
     <lastmod>2025-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.acarquitectura.com.co/contacto</loc>
+    <loc>https://www.acarquitectura.com.co/#testimonios</loc>
+    <lastmod>2025-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.acarquitectura.com.co/contact</loc>
     <lastmod>2025-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
