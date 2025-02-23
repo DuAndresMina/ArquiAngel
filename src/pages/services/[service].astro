@@ -6,19 +6,23 @@ import 'photoswipe/style.css';
 const services = {
   'servicio-basico': {
     title: 'Servicio Básico',
-    description: 'Renovaciones básicas para actualizar y mejorar pequeños espacios.',
+    description: 'Nuestro paquete de Servicio Básico está diseñado para propietarios que buscan renovar y actualizar sus espacios. Este servicio es perfecto para renovaciones rápidas y mejoras esenciales que pueden transformar su espacio en poco tiempo.',
     whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio Básico de remodelación.",
-    fullDescription: `El Servicio Básico está diseñado para propietarios que buscan refrescar y actualizar sus espacios sin cambios estructurales importantes. Es ideal para renovaciones rápidas y mejoras esenciales que pueden transformar su hogar en poco tiempo.`,
+    fullDescription: `Nuestro Servicio Básico incluye:
+    - Consulta y planificación profesional.
+    - Aplicación de estuco y pintura.
+    - Actualizaciones y reparaciones de pisos.
+    - Instalación de luminarias básicas.
+    - Trabajos de carpintería.
+    - Actualizaciones básicas de accesorios de plomería.
+    - Asistencia en la selección de materiales de calidad.
+    - Cronograma del proyecto: 3-4 semanas`,
     features: [
-      'Mesón en cuarzo o granito.',
-      'Muebles y barra de cocina en madera RH.',
-      'Cambio de combo sanitario.',
-      'Griferías y accesorios básicos.',
-      'Pisos en cerámica.',
-      'Paredes de baño y cocina en cerámica.',
-      'Paredes en estuco y pintura.',
-      'Cielos estucados y pintados.',
-      'Puertas y armarios en madera RH color básico.'
+      'Consulta inicial y planificación del diseño.',
+      'Guía de selección de materiales.',
+      'Instalación profesional.',
+      'Inspección de garantía de calidad.',
+      'Cobertura de garantía básica.'
     ],
     images: [
       '/services/basic/1.jpg',
@@ -28,21 +32,25 @@ const services = {
     ],
     video: '/services/basic/overview.mp4'
   },
-  'servicio-estandar': {
-    title: 'Servicio Estándar',
-    description: 'Renovación integral para transformaciones completas en sala, comedor, cocina, baños, patio y zona de oficios.',
-    whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio Estándar de remodelación.",
-    fullDescription: `El Servicio Estándar ofrece una solución de renovación integral para quienes buscan mejoras significativas en sus espacios. Combina calidad y diseño para crear transformaciones impresionantes.`,
+  'servicio-plus': {
+    title: 'Servicio Plus',
+    description: 'El paquete plus ofrece una solución de renovación integral para quienes buscan mejoras significativas en sus espacios. Este servicio combina artesanía de calidad con elementos de diseño mejorados para crear transformaciones impresionantes.',
+    whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio plus de remodelación.",
+    fullDescription: `Nuestro Servicio plus incluye:
+    - Consulta de diseño detallado.
+    - Renovaciones completas de las habitaciones.
+    - Opciones de gabinetes personalizados.
+    - Diseño de iluminación avanzado.
+    - Selección de materiales de primera calidad.
+    - Actualizaciones de fontanería y electricidad.
+    - Gestión de proyectos.
+    - Cronograma del proyecto: 4-5 semanas`,
     features: [
-      'Mesón en cuarzo o granito.',
-      'Muebles y barra de cocina en madera RH colores estándar.',
-      'Cambio de combo sanitario.',
-      'Griferías y accesorios gama media.',
-      'Pisos en cerámica, laminado o porcelanato.',
-      'Paredes de baño y cocina en cerámica o porcelanato.',
-      'Paredes en estuco y pintura.',
-      'Cielos en drywall.',
-      'Puertas y armarios en madera RH color estándar.'
+      'Consulta de diseño profesional.',
+      'Soluciones personalizadas y modificaciones.',
+      'Opciones de materiales de primera calidad.',
+      'Gestión de proyectos.',
+      'Cobertura de garantía extendida.'
     ],
     images: [
       '/services/enhanced/1.jpg',
@@ -54,21 +62,23 @@ const services = {
   },
   'servicio-premium': {
     title: 'Servicio Premium',
-    description: 'Renovación a gran escala con materiales premium y diseño experto.',
+    description: 'Nuestro Servicio Premium representa el pináculo de la excelencia en la renovación del hogar. Este paquete integral incluye todo lo necesario para una transformación completa de su espacio, con materiales de la más alta calidad y mano de obra experta.',
     whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio Premium de remodelación.",
-    fullDescription: `El Servicio Premium representa la máxima excelencia en renovación de hogares. Incluye todo lo necesario para una transformación completa de su espacio, con los materiales de mayor calidad y la mejor mano de obra.`,
+    fullDescription: `Nuestro Servicio Premium incluye:
+    - Diseño y planificación integral.
+    - Modificaciones arquitectónicas.
+    - Soluciones personalizadas.
+    - Selección de materiales de alta gama.
+    - Integración en el hogar inteligente.
+    - Gestión completa del proyecto.
+    - Acabados y detalles premium.
+    - Cronograma del proyecto: 5-8 semanas`,
     features: [
-      'Mesón en cuarzo o granito.',
-      'Muebles y barra de cocina en madera RH colores de alta gama.',
-      'Herrajes de cierre lento y accesorios de alta gama.',
-      'Cambio de combo sanitario.',
-      'Griferías y accesorios gama alta.',
-      'Pisos en cerámica, SPC o porcelanato.',
-      'Paredes de baño y cocina en cerámica o porcelanato.',
-      'Paredes en estuco y pintura.',
-      'Cielos en drywall.',
-      'Luces decorativas.',
-      'Puertas y armarios en madera RH colores de alta gama.'
+      'Consulta de diseño exclusivo.',
+      'Planificación arquitectónica.',
+      'Materiales y acabados de primera calidad.',
+      'Gerente de proyecto dedicado.',
+      'Paquete de garantía integral.'
     ],
     images: [
       '/services/premium/1.jpg',
@@ -83,7 +93,7 @@ const services = {
 export function getStaticPaths() {
   return [
     {params: {service: 'servicio-basico'}},
-    {params: {service: 'servicio-estandar'}},
+    {params: {service: 'servicio-plus'}},
     {params: {service: 'servicio-premium'}}
   ];
 }
@@ -99,6 +109,10 @@ const serviceData = services[service];
         <h1 class="text-4xl font-bold text-primary mb-6" data-aos="fade-up">
           {serviceData.title}
         </h1>
+
+        <p class="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+          {serviceData.description}
+        </p>
         
         <!-- Gallery Grid -->
         <!-- <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
@@ -137,7 +151,7 @@ const serviceData = services[service];
             {serviceData.fullDescription}
           </p>
 
-          <h2 class="text-2xl font-bold text-primary mb-4">Palabaras claves</h2>
+          <h2 class="text-2xl font-bold text-primary mb-4">Características clave</h2>
           <ul class="space-y-2 mb-8">
             {serviceData.features.map(feature => (
               <li class="flex items-center text-gray-600">
@@ -170,7 +184,7 @@ const serviceData = services[service];
   <WhatsAppButton message={serviceData.whatsappMessage} />
 </Layout>
 
-<script>
+<!-- <script>
   import PhotoSwipe from 'photoswipe';
   
   const galleryElements = document.querySelectorAll('.gallery-item');
@@ -196,4 +210,4 @@ const serviceData = services[service];
       gallery.init();
     });
   });
-</script>
+</script> -->
