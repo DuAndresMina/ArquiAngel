@@ -1,4 +1,3 @@
-// filepath: /c:/Users/Familia/Downloads/project-bolt-sb1-gbcpcwft (1)/project/api/send-email.js
 import express from 'express';
 import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
