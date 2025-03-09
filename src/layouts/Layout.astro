@@ -17,15 +17,16 @@ const { title, description, url, image } = Astro.props;
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8">
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/acarquitectura-logo.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>AC Arquitectura - Servicios Profesionales de Remodelación en Cali, Colombia</title>
+    <title>{title}</title>
     
-    <link rel="canonical" href="https://www.acarquitectura.com.co/">
+    <link rel="canonical" href={url}>
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://www.acarquitectura.com.co/">
+    <meta property="og:url" content={url}>
     <meta property="og:type" content="website">
     <meta property="og:title" content="AC Arquitectura - Servicios Profesionales de Remodelación en Cali, Colombia">
     <meta property="og:description" content="Diseñamos tus espacios, construimos tus sueños. Servicios profesionales de remodelación de casas, apartamentos y espacios comerciales en Cali, Colombia.">
