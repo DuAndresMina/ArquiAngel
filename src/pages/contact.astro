@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const title = "Contacto - AC Arquitectura";
+const description = "Póngase en contacto con AC Arquitectura para consultas personalizadas sobre remodelaciones y construcciones en Cali.";
+const url = "https://www.acarquitectura.com.co/contact";
+const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993";
 ---
 
-<Layout title="Contacto">
+<Layout title={title} description={description} url={url} image={image}>
   <section id="contact" class="py-20 bg-neutral">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
