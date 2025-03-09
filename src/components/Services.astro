@@ -97,13 +97,15 @@ onMount(() => {
           <div class="flex flex-col md:flex-row gap-2 mt-auto">
             <a 
               href="/contact" 
-              class="cta-button flex-1 text-center bg-primary text-white px-6 py-3 rounded-lg transition-colors relative overflow-hidden text-base"
+              class="cta-button  flex-1 text-center bg-primary text-white px-6 py-3 rounded-lg transition-colors relative overflow-hidden text-base"
             >
-              Iniciemos
+              <div class="m-[-10px]">Iniciemos
+                <span class="hover-effect"></span>
               <span class="hover-effect"></span>
               <span class="hover-effect"></span>
               <span class="hover-effect"></span>
-              <span class="hover-effect"></span>
+              </div>
+            
             </a>
             
           </div>
@@ -203,6 +205,7 @@ onMount(() => {
   right: 0;
   bottom: 0;
   padding: 0.5rem 0;
+  margin: 0.2rem 0 0 0rem; /* Mueve el texto más a la izquierda */
   color: #282936;
   font-weight: 700;
   line-height: 1.6;
