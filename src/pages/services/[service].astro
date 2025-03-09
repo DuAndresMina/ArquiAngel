@@ -30,7 +30,9 @@ const services = {
       '/services/basic/3.jpg',
       '/services/basic/4.jpg'
     ],
-    video: '/services/basic/overview.mp4'
+    video: '/services/basic/overview.mp4',
+    url: 'https://www.acarquitectura.com.co/services/servicio-basico',
+    image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   },
   'servicio-plus': {
     title: 'Servicio Plus',
@@ -58,7 +60,9 @@ const services = {
       '/services/enhanced/3.jpg',
       '/services/enhanced/4.jpg'
     ],
-    video: '/services/enhanced/overview.mp4'
+    video: '/services/enhanced/overview.mp4',
+    url: 'https://www.acarquitectura.com.co/services/servicio-plus',
+    image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   },
   'servicio-premium': {
     title: 'Servicio Premium',
@@ -86,7 +90,9 @@ const services = {
       '/services/premium/3.jpg',
       '/services/premium/4.jpg'
     ],
-    video: '/services/premium/overview.mp4'
+    video: '/services/premium/overview.mp4',
+    url: 'https://www.acarquitectura.com.co/services/servicio-premium',
+    image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   }
 };
 
@@ -102,7 +108,7 @@ const { service } = Astro.params;
 const serviceData = services[service];
 ---
 
-<Layout title={`AC Arquitectura - ${serviceData.title}`}>
+<Layout title={`AC Arquitectura - ${serviceData.title}`} description={serviceData.description} url={serviceData.url} image={serviceData.image}>
   <main class="pt-20">
     <div class="container mx-auto px-4 py-12">
       <div class="max-w-4xl mx-auto">
