@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const title = "AC Arquitectura - Quiénes Somos";
+const description = "Conozca más sobre AC Arquitectura y Construcción S.A.S., nuestra misión, visión y propósito. Transformamos espacios y mejoramos vidas en Colombia.";
+const url = "https://www.acarquitectura.com.co/quienes-somos";
+const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993";
+
 const sections = [
   {
     title: "Misión",
@@ -20,7 +25,7 @@ const sections = [
 ];
 ---
 
-<Layout title="AC Arquitectura - Quiénes Somos">
+<Layout title={title} description={description} url={url} image={image}>
   <main class="pt-20">
     <!-- Hero Section -->
     <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center">
