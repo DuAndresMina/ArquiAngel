@@ -105,6 +105,9 @@ onMount(() => {
               <span class="hover-effect"></span>
               <span class="hover-effect"></span>
             </a>
+            
+          </div>
+          <div>
             <a 
               href={`/services/${service.slug}`} 
               class="learn-more flex-1 text-center bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors text-base"
@@ -115,7 +118,7 @@ onMount(() => {
               <span class="button-text">Leer más</span>
             </a>
           </div>
-        </div>
+          </div>
       ))}
     </div>
   </div>
@@ -200,7 +203,6 @@ onMount(() => {
   right: 0;
   bottom: 0;
   padding: 0.5rem 0;
-  margin: 0 0 0 3rem; /* Mueve el texto más a la izquierda */
   color: #282936;
   font-weight: 700;
   line-height: 1.6;
@@ -226,7 +228,7 @@ onMount(() => {
   color: white; /* Cambia el color del texto a blanco */
   font-size: 16px;
   border: none; /* Elimina el borde */
-  border-radius: 0.5em;
+  border-radius: 2em;
   width: 100%;
   height: 3em;
   text-transform: uppercase;
