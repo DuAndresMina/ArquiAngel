@@ -2,6 +2,7 @@
 import '@fontsource/poppins';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
+import Consent from '../components/Consent.astro';
 
 interface Props {
   title: string;
@@ -67,11 +68,7 @@ const { title, description, url, image } = Astro.props;
 
     <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
-
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P4TFZ5RP"></script>
-    <!-- End Google Tag Manager -->
-
+    
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -94,44 +91,50 @@ const { title, description, url, image } = Astro.props;
         ]
       }
     </script>
-  </head>
-  <body class="font-poppins">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Cookie Consent by TermsFeed -->
-    <script defer src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        cookieconsent.run({
-          "notice_banner_type": "simple",
-          "consent_type": "express",
-          "palette": "dark",
-          "language": "es",
-          "page_load_consent_levels": ["strictly-necessary"],
-          "notice_banner_reject_button_hide": false,
-          "preferences_center_close_button_hide": false,
-          "page_refresh_confirmation_buttons": false,
-          "website_name": "AC Arquitectura",
-          "website_privacy_policy_url": "https://www.acarquitectura.com.co/politica-privacidad"
-        });
-      });
-    </script>
-    <!-- End Cookie Consent by TermsFeed -->
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRTFKSJ72M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-KRTFKSJ72M');
-    </script>
-    <!-- End Google Analytics -->
 
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
-    <!-- End Cookie Consent by TermsFeed -->
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+
+      if (localStorage.getItem('consentMode') === null) {
+          gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'personalization_storage': 'denied',
+              'functionality_storage': 'denied',
+              'security_storage': 'denied',
+          });
+      } else {
+          gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+      }
+
+      if (localStorage.getItem('userId') != null) {
+          window.dataLayer.push({
+              'user_id': localStorage.getItem('userId')
+          });
+      }
+  </script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P4TFZ5RP');</script>
+  <!-- End Google Tag Manager -->
+
+</head>
+<body class="font-poppins">
+
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    
+    <Consent />
 
     <Navbar />
     <slot />
