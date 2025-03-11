@@ -126,7 +126,7 @@
             'analytics_storage': consent.analytics ? 'granted' : 'denied',
             'personalization_storage': consent.preferences ? 'granted' : 'denied',
             'ad_user_data': consent.marketing ? 'granted' : 'denied',
-            'ad_personalization	': consent.marketing ? 'granted' : 'denied'
+            'ad_personalization	': consent.preferences ? 'granted' : 'denied'
         };
         if (typeof gtag === 'function') {
             gtag('consent', 'update', consentMode);
