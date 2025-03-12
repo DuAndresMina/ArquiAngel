@@ -2,7 +2,6 @@
 import '@fontsource/poppins';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-const gtmId = import.meta.env.GTM_ID; 
 
 interface Props {
   title: string;
@@ -101,7 +100,7 @@ const { title, description, url, image } = Astro.props;
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','{gtmId}');</script>
+  })(window,document,'script','dataLayer','GTM-P4TFZ5RP');</script>
   <!-- End Google Tag Manager -->
   
 </head>
@@ -109,7 +108,7 @@ const { title, description, url, image } = Astro.props;
   
         <!-- Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+    <iframe src={`https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP`}
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
