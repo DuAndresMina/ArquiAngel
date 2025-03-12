@@ -2,7 +2,7 @@
 import '@fontsource/poppins';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-const gtmId = import.meta.env.PUBLIC_GTM_ID; 
+const gtmId = import.meta.env.GTM_ID; 
 
 interface Props {
   title: string;
@@ -116,8 +116,6 @@ const { title, description, url, image } = Astro.props;
     
     <!-- CookieConsent -->
     <script type="module" src="/scripts/cookieconsent-config.js"></script>
-
-  </script>
 
     <Navbar />
     <slot />
