@@ -2,7 +2,7 @@
 import '@fontsource/poppins';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-import Consent from '../components/Consent.astro';
+const gtmId = import.meta.env.PUBLIC_GTM_ID; 
 
 interface Props {
   title: string;
@@ -69,6 +69,9 @@ const { title, description, url, image } = Astro.props;
     <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
+
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -92,49 +95,29 @@ const { title, description, url, image } = Astro.props;
       }
     </script>
 
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-          dataLayer.push(arguments);
-      }
-
-      if (localStorage.getItem('consentMode') === null) {
-          gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'analytics_storage': 'denied',
-              'personalization_storage': 'denied',
-              'functionality_storage': 'denied',
-              'security_storage': 'denied',
-          });
-      } else {
-          gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
-      }
-
-      if (localStorage.getItem('userId') != null) {
-          window.dataLayer.push({
-              'user_id': localStorage.getItem('userId')
-          });
-      }
-  </script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-P4TFZ5RP');</script>
+  })(window,document,'script','dataLayer','{gtmId}');</script>
   <!-- End Google Tag Manager -->
-
+  
 </head>
 <body class="font-poppins">
-
+  
         <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4TFZ5RP"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
   <!-- End Google Tag Manager (noscript) -->
     
-    <Consent />
+    <!-- CookieConsent -->
+    <script type="module" src="/public/scripts/cookieconsent-config.js"></script>
+
+  </script>
 
     <Navbar />
     <slot />
