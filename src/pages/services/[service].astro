@@ -87,55 +87,102 @@ const serviceData = services[service];
 ---
 
 <Layout title={`AC Arquitectura - ${serviceData.title}`} description={serviceData.description} url={serviceData.url} image={serviceData.image}>
-  <main class="pt-20">
+  <main class="pt-20 bg-gradient-to-b from-white to-neutral-50">
     <div class="container mx-auto px-4 py-12">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold text-primary mb-6" data-aos="fade-up">
-          {serviceData.title}
-        </h1>
+      <div class="max-w-6xl mx-auto">
+        <!-- Encabezado con efecto parallax -->
+        <div class="relative overflow-hidden rounded-2xl mb-12 h-[400px]" data-aos="zoom-in">
+          <div class="absolute inset-0 bg-black/30"></div>
+          
+          <div class="absolute bottom-0 left-0 right-0 p-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg" data-aos="fade-up">
+              {serviceData.title}
+            </h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+              {serviceData.description}
+            </p>
+          </div>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+          <div class="prose max-w-none" data-aos="fade-right">
+            <h2 class="text-3xl font-bold text-primary mb-6">Descripción Completa</h2>
+            <div class="space-y-6 text-gray-600">
+              {serviceData.fullDescription.split('\n').map((line, index) => (
+                <p class="border-l-4 border-secondary pl-4 animate-fade-in" data-aos-delay={index * 50}>
+                  {line.trim()}
+                </p>
+              ))}
+            </div>
+          </div>
 
-        <p class="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
-          {serviceData.description}
-        </p>
-
-        <div class="prose max-w-none" data-aos="fade-up" data-aos-delay="200">
-          <p class="text-gray-600 whitespace-pre-line mb-8">
-            {serviceData.fullDescription}
-          </p>
-
-          <h2 class="text-2xl font-bold text-primary mb-4">Características clave</h2>
-          <ul class="space-y-2 mb-8">
-            {serviceData.features.map(feature => (
-              <li class="flex items-center text-gray-600">
-                <svg class="w-5 h-5 text-secondary mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
+          <div data-aos="fade-left">
+            <div class="bg-white p-8 rounded-2xl shadow-xl sticky top-24">
+              <h2 class="text-3xl font-bold text-primary mb-6">Beneficios Clave</h2>
+              <ul class="space-y-4">
+                {serviceData.features.map((feature, index) => (
+                  <li class="flex items-start p-4 rounded-lg bg-neutral-50 transform transition-all hover:scale-[1.02] hover:shadow-md" >
+                    <div class="bg-primary p-2 rounded-full mr-4">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </div>
+                    <span class="text-gray-600 flex-1">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-2 mt-auto">
-          <a 
-            href="/#contact" 
-            class="cta-button flex-1 text-center bg-primary text-white px-6 py-3 rounded-lg transition-colors relative overflow-hidden text-base"
-          >
-            Contáctanos
-            <span class="hover-effect"></span>
-            <span class="hover-effect"></span>
-            <span class="hover-effect"></span>
-            <span class="hover-effect"></span>
-          </a>
-          <a 
-            href="/#servicios" 
-            class="learn-more flex-1 text-center bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg transition-colors text-base"
-          >
-            <span class="circle">
-              <span class="icon arrow"></span>
-            </span>
-            <span class="button-text">Regresar al inicio</span>
-          </a>
+        <!-- CTA Section -->
+        <div class="text-center bg-gradient-to-r from-primary to-secondary p-1 rounded-2xl mb-12" data-aos="zoom-in">
+          <div class="bg-white rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Transformar tu Espacio?</h3>
+            <p class="text-gray-600 mb-6 max-w-xl mx-auto">
+              Agenda una consulta gratuita con nuestros expertos y descubre cómo podemos hacer realidad tus proyectos
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+              <a 
+                href="/#contact" 
+                class="bg-primary text-white px-8 py-4 rounded-lg font-bold hover:bg-secondary transition-all transform hover:scale-105 shadow-lg"
+              >
+                Solicitar Consulta
+              </a>
+              <a 
+                href="https://wa.me/+573146755310?text=${encodeURIComponent(serviceData.whatsappMessage)}" 
+                class="bg-green-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp text-xl"></i>
+                Chat Instantáneo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proceso de Trabajo -->
+        <div class="mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-primary mb-8 text-center">Nuestro Proceso</h2>
+          <div class="grid md:grid-cols-4 gap-8">
+            {[
+              ['Consulta Inicial', 'fas fa-comments'],
+              ['Diseño Personalizado', 'fas fa-drafting-compass'],
+              ['Ejecución Profesional', 'fas fa-hard-hat'],
+              ['Entrega Final', 'fas fa-home']
+            ].map(([title, icon], index) => (
+              <div class="text-center p-6 bg-white rounded-xl shadow-lg transform transition-all hover:scale-105" 
+                   data-aos="zoom-in" 
+                   data-aos-delay={index * 100}>
+                <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class={`${icon} text-2xl text-white`}></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+                <p class="text-gray-600">Paso {index + 1} del proceso de remodelación</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -143,147 +190,47 @@ const serviceData = services[service];
   <WhatsAppButton message={serviceData.whatsappMessage} />
 </Layout>
 
-<style>
-.learn-more {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  width: 12rem;
-  height: 3em; /* Ajusta la altura del botón */
-  line-height: 3em; /* Centra verticalmente el texto */
-}
+<style is:global>
+  @keyframes scale-in {
+    0% { transform: scale(1.1); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
 
-.learn-more .circle {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: relative;
-  display: block;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  background: #282936;
-  border-radius: 1.5rem;
-}
+  .animate-scale-in {
+    animation: scale-in 1.5s ease-out forwards;
+  }
 
-.learn-more .icon {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  background: #fff;
-}
+  .prose ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-.learn-more .icon.arrow {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  left: -1rem; /* Mueve la flecha más a la izquierda */
-  width: 1rem;
-  height: 0.125rem;
-  background: none;
-}
+  .prose li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
 
-.learn-more .icon.arrow::before {
-  position: absolute;
-  content: '';
-  top: -0.25rem;
-  right: 0.0625rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-top: 0.125rem solid #fff;
-  border-right: 0.125rem solid #fff;
-  transform: rotate(45deg);
-}
+  .prose li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F27405'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+  }
 
-.learn-more .button-text {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.5rem 0;
-  margin: 1rem 0 0rem 0rem; /* Mueve el texto más a la izquierda */
-  color: #282936;
-  font-weight: 700;
-  line-height: 1.6;
-  text-align: center;
-  text-transform: uppercase;
-}
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
 
-.learn-more:hover .circle {
-  width: 100%;
-}
-
-.learn-more:hover .icon.arrow {
-  background: #fff;
-  transform: translate(2rem, 0); /* Mueve la flecha más a la izquierda en el estado hover */
-}
-
-.learn-more:hover .button-text {
-  color: #fff;
-}
-
-.cta-button {
-  --c: #1a202c; /* Color primario */
-  color: white; /* Cambia el color del texto a blanco */
-  font-size: 16px;
-  border: none; /* Elimina el borde */
-  border-radius: 2em;
-  width: 100%;
-  height: 3em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-family: inherit; /* Usa la fuente nativa */
-  letter-spacing: 0.1em;
-  text-align: center;
-  line-height: 3em; /* Centra verticalmente el texto */
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: 0.5s;
-}
-
-.cta-button span.hover-effect {
-  position: absolute;
-  width: 25%;
-  height: 100%;
-  background-color: var(--c);
-  transform: translateY(150%);
-  border-radius: 50%;
-  left: calc((var(--n) - 1) * 25%);
-  transition: 0.5s;
-  transition-delay: calc((var (--n) - 1) * 0.1s);
-  z-index: -1;
-}
-
-.cta-button:hover {
-  color: white;
-}
-
-.cta-button:hover span.hover-effect {
-  transform: translateY(0) scale(2);
-}
-
-.cta-button span.hover-effect:nth-child(1) {
-  --n: 1;
-}
-
-.cta-button span.hover-effect:nth-child(2) {
-  --n: 2;
-}
-
-.cta-button span.hover-effect:nth-child(3) {
-  --n: 3;
-}
-
-.cta-button span.hover-effect:nth-child(4) {
-  --n: 4;
-}
+  @media (max-width: 768px) {
+    .gallery-item:first-child {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
 </style>
