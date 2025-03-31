@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import compression from 'compression';
+import path from 'path'; // Importación añadida
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.HOST,
     port: process.env.PORT,
-    secure: true,
+    secure: process.env.PORT === '465', // Asegura que secure sea true solo si el puerto es 465
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_PASS,
@@ -45,7 +46,7 @@ export default async function handler(req, res) {
     from: process.env.GMAIL_USER,
     to: process.env.GMAIL_USER,
     subject: `Consulta de ${name} - ${service}`,
-    text: `Nombre: ${name}\nEmail: ${email}\nServicio:\Número: ${number} ${service}\nMensaje: ${message}`,
+    text: `Nombre: ${name}\nEmail: ${email}\nServicio: ${service}\nNúmero: ${number}\nMensaje: ${message}`,
   };
 
   try {
