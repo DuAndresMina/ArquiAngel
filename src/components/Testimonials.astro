@@ -90,6 +90,7 @@ const testimonials = await Promise.all(
   }))
 );
 
+
 ---
 
 <section id="testimonios" class="relative py-20 bg-neutral">
@@ -185,7 +186,6 @@ const testimonials = await Promise.all(
     try {
       // Obtener los datos del servidor
       const testimonials = JSON.parse(document.getElementById('testimonials-data').textContent);
-      console.log('Testimonios cargados:', testimonials);
   
       class TestimonialPlayer {
   constructor() {
