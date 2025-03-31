@@ -4,28 +4,50 @@ const links = [
   { href: '/', text: 'Servicios', hash: '#servicios' },
   { href: '/', text: 'Testimonios', hash: '#testimonios' },
   { href: '/contact', text: 'Contacto'},
+  { href: '/quienes-somos', text: '¿Quiénes Somos?' }, // Nuevo enlace
+
 ];
 
 const currentPath = Astro.url.pathname;
 ---
-<!-- { href: '/', text: 'Portafolio', hash: '#portfolio' }, -->
 
-<header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+<header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm transition-all duration-300">
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold text-primary">
-        <img src="/acarquitectura-sinfondo.webp" loading="lazy" alt="AC Arquitectura Logo" class="h-12" />
+      <!-- Logo con animación -->
+      <a 
+        href="/" 
+        class="text-2xl font-bold text-primary transition-transform duration-300 hover:scale-105"
+      >
+        <img 
+          src="/acarquitectura-sinfondo.webp" 
+          loading="lazy" 
+          alt="AC Arquitectura Logo" 
+          class="h-12 w-auto transition-opacity duration-300 hover:opacity-90"
+        />
       </a>
       
-      <!-- Desktop menu only -->
-      <ul class="hidden lg:flex space-x-8">
+      <!-- Menú Desktop con animaciones -->
+      <ul class="hidden lg:flex space-x-6">
         {links.map(link => (
           <li>
             <a 
               href={link.hash ? `${link.href}${link.hash}` : link.href}
-              class="text-gray-600 hover:text-primary transition-colors"
+              class={`
+                group relative text-gray-600 font-medium
+                transition-all duration-300 
+                hover:text-primary 
+              `}
             >
               {link.text}
+              
+              <!-- Subrayado animado -->
+              <span class="
+                absolute left-0 bottom-0 
+                w-0 h-0.5 bg-primary 
+                transition-all duration-300 
+                group-hover:w-full
+              "></span>
             </a>
           </li>
         ))}
@@ -33,3 +55,43 @@ const currentPath = Astro.url.pathname;
     </div>
   </nav>
 </header>
+
+<style>
+/* Animación de entrada */
+header {
+  animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de desplazamiento */
+header.scrolled {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(12px);
+}
+
+/* Efecto hover en enlaces */
+header a:hover {
+  transition-delay: 0.1s;
+}
+
+/* Efecto de pulsación en logo */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+header img:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+</style>

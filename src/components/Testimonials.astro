@@ -1,5 +1,10 @@
 ---
-const testimonials = [
+// components/SplitTestimonials.astro
+
+import { generatePresignedUrl } from '/api/r2.js';
+
+// Definir testimonios con claves de video
+const testimonialsData =  [
   {
     id: 'story-1',
     clientName: 'José Ramiro',
@@ -35,206 +40,271 @@ const testimonials = [
       text: "En AC Arquitectura & Construcción S.A.S., trabajamos para hacer realidad los sueños de quienes confían en nosotros. Hoy, Manuel de Jesús Reyes Pérez nos comparte su experiencia tras la remodelación de su hogar. Cada detalle fue pensado para brindarle un espacio renovado, funcional y lleno de confort. Nos enorgullece ser parte de historias como la suya.",
       video: 'testimonio-4.mp4'
     }
+  },
+  {
+    id: 'story-5',
+    clientName: 'Jhon Alexander',
+    projectType: 'Remodelación de Casa',
+    content: {
+      text: "Cada espacio tiene el potencial de convertirse en algo extraordinario, y en AC Arquitectura & Construcción S.A.S., hacemos que eso suceda. Hoy, Jhon Alexander nos comparte su experiencia tras confiar en nuestro equipo para la remodelación de su hogar. Desde el diseño hasta la ejecución, trabajamos con calidad, precisión y compromiso, logrando un resultado que superó sus expectativas.",
+      video: 'testimonio-5.mp4'
+    }
+  },
+  {
+    id: 'story-6',
+    clientName: '',
+    projectType: 'Remodelación de Casa',
+    content: {
+      text: "🏡 De visión a realidad: un caso de éxito en remodelación ✨Cada espacio tiene el potencial de transformarse en algo increíble. En AC Arquitectura & Construcción S.A.S., convertimos ideas en ambientes funcionales y estéticamente impecables. El resultado: un espacio renovado que refleja calidad, estilo y confort.📩",
+      video: 'testimonio-6.mp4'
+    }
+  },
+  {
+    id: 'story-7',
+    clientName: 'Maribel Jimenez',
+    projectType: 'Remodelación de Casa',
+    content: {
+      text: "Cuando se trata de convertir una casa en un hogar funcional y acogedor, cada detalle cuenta. 💡🔨 Hoy, Maribel Jimenez nos comparte su experiencia tras confiar en AC Arquitectura & Construcción para la remodelación de su espacio. Desde la planificación hasta la entrega final, trabajamos con calidad, compromiso y diseño a la medida.",
+      video: 'testimonio-7.mp4'
+    }
+  },
+  {
+    id: 'story-8',
+    clientName: 'Edwin García',
+    projectType: 'Remodelación de Casa',
+    content: {
+      text: "Edwin García confió en Arquitectura y Construcción S.A.S. para la remodelación de su hogar, y los resultados hablan por sí solos. 🔨🏠Cada detalle fue diseñado para brindar confort, estilo y funcionalidad, convirtiendo su casa en el espacio que siempre soñó.",
+      video: 'testimonio-8.mp4'
+    }
   }
 ];
+
+// Generar URLs pre-firmadas en el servidor
+const testimonials = await Promise.all(
+  testimonialsData.map(async (testimonial) => ({
+    ...testimonial,
+    content: {
+      ...testimonial.content,
+      videoUrl: await generatePresignedUrl(testimonial.content.video)
+    }
+  }))
+);
+
+
 ---
 
-<section id="testimonios" class="py-20 bg-neutral">
+<section id="testimonios" class="relative py-20 bg-neutral">
   <div class="container mx-auto px-4">
-    <!-- Section Title -->
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-primary mb-4">Testimonios</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Descubre las historias de éxito de nuestros clientes satisfechos
-      </p>
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-primary mb-4">Experiencias Reales</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Descubre lo que nuestros clientes dicen sobre nuestro trabajo</p>
     </div>
 
-    <!-- Instagram-style Stories -->
-    <div class="max-w-screen-lg mx-auto" data-aos="fade-up">
-      <!-- Stories Container -->
-      <div class="flex justify-center">
-        <div class="grid grid-flow-col auto-cols-max gap-4 md:gap-8 overflow-x-auto py-4 px-4 snap-x scrollbar-hide">
-          {testimonials.map((story) => (
-            <div class="snap-start">
-              <button 
-                class="story-trigger group focus:outline-none"
-                data-story-id={story.id}
-              >
-                <!-- Story Circle -->
-                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-0.5 cursor-pointer transition-transform duration-300 hover:scale-105">
-                  <div class="w-full h-full rounded-full border-2 border-white p-0.5 bg-white flex items-center justify-center">
-                    <i class="fas fa-user text-gray-500 text-2xl md:text-4xl"></i>
-                  </div>
-                </div>
-                <!-- Story Name -->
-                <p class="text-center text-sm mt-2 text-gray-700 font-medium truncate max-w-[100px]">
-                  {story.clientName}
-                </p>
-              </button>
+    <!-- Contenedor Principal -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
+      <!-- Columna de Video -->
+      <div class="relative aspect-video md:aspect-square bg-black rounded-xl overflow-hidden shadow-xl">
+        <div id="video-wrapper" class="relative h-full">
+          <video 
+            id="testimonial-video"
+            class="w-full h-full object-cover transition-opacity duration-500"
+            autoplay
+            playsinline
+            loop
+          ></video>
+        </div>
+        
+        <!-- Botón de Audio Mejorado -->
+        <button id="audio-toggle" class="absolute bottom-4 right-4 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-all">
+          <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path id="sound-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.536 8.464a5 5 0 010 7.072M12 18.364a7 7 0 010-12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+            <path id="mute-line" stroke-linecap="round" stroke-width="1.5" d="M19 5l4 4m0-4l-4 4" class="opacity-0"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Columna de Texto -->
+      <div class="flex flex-col justify-center">
+        <div class="relative h-full bg-white p-6 md:p-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+          <!-- Contenido del Testimonio -->
+          <div id="text-content" class="space-y-8">
+            <div class="text-center mb-8">
+              <h3 id="client-name" class="text-3xl font-extrabold text-primary mb-4">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                  Cargando...
+                </span>
+              </h3>
+              <p id="project-type" class="text-lg font-semibold text-gray-500 uppercase tracking-wide">
+                <!-- Texto del tipo de proyecto se insertará aquí -->
+              </p>
             </div>
-          ))}
+      
+            <div class="relative">
+              <p id="testimonial-text" class="text-gray-600 text-lg leading-relaxed text-center max-w-2xl mx-auto">
+                <!-- Texto del testimonio se insertará aquí -->
+              </p>
+              
+              <!-- Icono decorativo de comillas -->
+              <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 opacity-20">
+                <svg class="w-16 h-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+      
+          
+        </div>
+        <!-- Controles de Navegación Mejorados -->
+        <div class="flex items-center justify-center gap-6 mt-12">
+          <button id="prev-testimonial" class="p-4 hover:bg-gray-50 rounded-full transition-all transform hover:-translate-x-1 group">
+            <svg class="w-10 h-10 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          
+          <div class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full font-bold text-lg">
+            <span id="current-testimonial"></span>
+          </div>
+    
+          <button id="next-testimonial" class="p-4 hover:bg-gray-50 rounded-full transition-all transform hover:translate-x-1 group">
+            <svg class="w-10 h-10 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Story Modal -->
-  <div id="story-modal" class="fixed inset-0 bg-black/95 z-50 hidden">
-    <div class="relative w-full h-full flex items-center justify-center">
-      <!-- Close Button -->
-      <button 
-        id="close-story" 
-        class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-primary z-10 p-2 transition-colors"
-        aria-label="Close story"
-      >
-        <svg class="w-8 h-8" fill="none" stroke="black" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-
-      <!-- Story Content Container -->
-      <div class="w-full max-w-4xl mx-auto h-full md:h-auto md:max-h-[85vh] bg-white rounded-none md:rounded-xl overflow-hidden">
-        <div id="story-content" class="h-full md:h-auto overflow-y-auto">
-          <!-- Content will be dynamically inserted here -->
-        </div>
-      </div>
-    </div>
-  </div>
+ <script id="testimonials-data" type="application/json" set:html={JSON.stringify(testimonials)} />
 </section>
 
-<style>
-  /* Distribución para móvil (predeterminado) */
-  #story-content {
-    display: flex;
-    flex-direction: column;
-  }
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Mantén la relación de aspecto 16:9 */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    border-radius: 12px; /* Bordes redondeados */
-    margin: 0 auto; /* Centra el contenedor */
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      // Obtener los datos del servidor
+      const testimonials = JSON.parse(document.getElementById('testimonials-data').textContent);
+  
+      class TestimonialPlayer {
+  constructor() {
+    this.currentIndex = 0;
+    this.videoElement = document.getElementById('testimonial-video');
+    this.clientName = document.getElementById('client-name');
+    this.projectType = document.getElementById('project-type');
+    this.testimonialText = document.getElementById('testimonial-text');
+    this.audioButton = document.getElementById('audio-toggle');
+    this.muteLine = document.getElementById('mute-line'); // Añadir esta línea
+    this.soundIcon = document.getElementById('sound-icon'); // Añadir esta línea
+    this.isMuted = true;
+
+    this.init();
   }
 
-  /* Ajusta el video para que ocupe todo el contenedor */
-  .video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que el video cubra el contenedor sin distorsión */
+  init() {
+    this.videoElement.muted = this.isMuted;
+    this.updateAudioIcon();
+    this.loadTestimonial(this.currentIndex);
+    this.setupEventListeners();
+  }
+
+  updateAudioIcon() {
+    if (this.isMuted) {
+      this.muteLine.classList.remove('opacity-0');
+      this.soundIcon.classList.add('opacity-50');
+    } else {
+      this.muteLine.classList.add('opacity-0');
+      this.soundIcon.classList.remove('opacity-50');
+    }
+  }
+
+  async loadTestimonial(index) {
+    const testimonial = testimonials[index];
+    if (!testimonial) return;
+
+    // Animación de transición
+    this.videoElement.style.opacity = '0';
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    // Actualizar contenido
+    this.clientName.textContent = testimonial.clientName;
+    this.projectType.textContent = testimonial.projectType;
+    this.testimonialText.textContent = testimonial.content.text;
+    this.videoElement.src = testimonial.content.videoUrl;
+    
+    try {
+      await this.videoElement.play();
+    } catch (error) {
+      console.error('Error al reproducir:', error);
+    }
+    
+    // Restaurar opacidad
+    this.videoElement.style.opacity = '1';
+  }
+
+  setupEventListeners() {
+    this.audioButton.addEventListener('click', () => {
+      this.isMuted = !this.isMuted;
+      this.videoElement.muted = this.isMuted;
+      this.updateAudioIcon();
+    });
+
+    document.getElementById('next-testimonial').addEventListener('click', () => {
+      this.currentIndex = (this.currentIndex + 1) % testimonials.length;
+      this.loadTestimonial(this.currentIndex);
+    });
+
+    document.getElementById('prev-testimonial').addEventListener('click', () => {
+      this.currentIndex = (this.currentIndex - 1 + testimonials.length) % testimonials.length;
+      this.loadTestimonial(this.currentIndex);
+    });
+  }
+}
+      
+  
+      new TestimonialPlayer();
+    } catch (error) {
+      console.error('Error al cargar los testimonios:', error);
+    }
+  });
+  </script>
+
+<style>
+  /* Transiciones mejoradas */
+  #testimonial-video {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  #text-content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  #mute-line {
+    transition: opacity 0.2s ease;
+    stroke: #F27405;
+  }
+
+  #sound-icon {
+    transition: opacity 0.2s ease;
+  }
+
+  /* Mejoras visuales */
+  #audio-toggle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #prev-testimonial:hover svg,
+  #next-testimonial:hover svg {
+    transform: scale(1.1);
+  }
+
+  #prev-testimonial svg,
+  #next-testimonial svg {
+    transition: transform 0.2s ease;
   }
 </style>
-
-<script>
-const testimonials = {
-  'story-1': {
-    clientName: 'José Ramiro',
-    projectType: 'Remodelación de Casa',
-    content: {
-      text: "La mejor prueba de nuestro trabajo son nuestros clientes satisfechos🎤 José Ramiro confió en Arquitectura y Construcción S.A.S. y hoy nos comparte su experiencia. Cada proyecto que realizamos es un compromiso con la calidad, la innovación y la satisfacción de nuestros clientes. 🏗️🏠",
-      video: '/testimonio-1.mp4'
-    }
-  },
-  'story-2': {
-    clientName: 'Sergio Yamid Herrera',
-    projectType: 'Remodelación de Casa',
-    content: {
-      text: "🔷 La mejor garantía es la satisfacción de nuestros clientes 🔷 Escucha el testimonio de Sergio Yamid Herrera, quien confió en AC Arquitectura y Construcción S.A.S para su proyecto. 🏗️✨",
-      video: 'testimonio-2.mp4'
-    }
-  },
-  'story-3': {
-    clientName: 'Liliana Ortiz Toro',
-    projectType: 'Diseño de Interiores',
-    content: {
-      text: "La renovación de nuestro restaurante fue todo un éxito. AC Arquitectura entendió perfectamente nuestra visión y la ejecutó de manera brillante.",
-      video: 'testimonio-3.mp4'
-    }
-  }
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('story-modal');
-  const storyContent = document.getElementById('story-content');
-  const closeButton = document.getElementById('close-story');
-  const storyTriggers = document.querySelectorAll('.story-trigger');
-
-  function showStory(storyId) {
-    const story = testimonials[storyId];
-    if (!story) return;
-
-    const content = `
-      <div id="story-content" class="p-4 md:p-8 flex flex-col md:flex-row bg-gray-100 rounded-lg shadow-lg">
-        <!-- Contenido textual -->
-        <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 text-center md:text-left">
-          <div class="w-full">
-            <div class="flex items-center space-x-4 mb-4">
-              <div class="w-12 h-12 rounded-full overflow-hidden">
-                <i class="fas fa-user text-gray-500 text-2xl md:text-4xl"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-primary">${story.clientName}</h3>
-                <p class="text-gray-600">${story.projectType}</p>
-              </div>
-            </div>
-            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
-              ${story.content.text}
-            </p>
-          </div>
-        </div>
-
-        <!-- Contenido multimedia -->
-        <div class="md:w-1/2 w-full flex items-center justify-center p-4 md:p-6 rounded-lg"> 
-          <div class="w-full">
-            ${story.content.video ? `
-              <div class="video-container"> 
-                <video controls playsinline autoplay muted loop class="w-full h-auto md:w-3/4 rounded-lg "> 
-                  <source src="${story.content.video}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            ` : ''}
-          </div>
-        </div>
-      </div>
-    `;
-
-    storyContent.innerHTML = content;
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  storyTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const storyId = trigger.dataset.storyId;
-      showStory(storyId);
-    });
-  });
-
-  function closeModal() {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-
-  closeButton.addEventListener('click', closeModal);
-
-  // Close modal when clicking outside
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  // Close modal with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
-    }
-  });
-});
-</script>

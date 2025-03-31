@@ -1,0 +1,146 @@
+---
+// components/RemodelacionUrgente.astro
+import FlashAlert from '../../public/Icons/flash-alert.svg'
+import HomeRoof from '../../public/Icons/home-roof.svg'
+import WaterAlert from '../../public/Icons/water-alert.svg'
+import Brush from '../../public/Icons/brush-variant.svg'
+// Asegúrate de instalar: npm install astro-icon
+---
+
+<section class="relative py-20 bg-secondary bg-opacity-5 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Título Principal -->
+    <div class="text-center mb-20" data-aos="zoom-in-up" data-aos-delay="100">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary transform hover:scale-105 transition-all duration-300">
+        SEÑALES DE QUE TU HOGAR<br class="hidden md:block"> NECESITA UNA REMODELACIÓN <span class="text-secondary animate-pulse">URGENTE</span>
+      </h2>
+      <div class="h-1 w-24 bg-primary mx-auto mt-6 animate-bounce"></div>
+    </div>
+
+    <!-- Problemas Estructurales -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <!-- Grietas -->
+      <div class="relative p-8 bg-white rounded-lg shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2" 
+           data-aos="flip-up" data-aos-delay="150">
+        <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl animate-spin-slow">
+          01
+        </div>
+        <HomeRoof class="w-16 h-16 text-primary animate-shake" />
+        <h3 class="text-2xl font-bold text-secondary mb-4">¿NOTAS GRIETAS EN MUROS O TECHOS?</h3>
+        <p class="text-gray-600">Estas pueden ser señales de <strong class="text-primary animate-pulse">problemas estructurales</strong>. No las ignores, una reparación a tiempo evita costos mayores.</p>
+      </div>
+
+      <!-- Humedad -->
+      <div class="relative p-8 bg-white rounded-lg shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2" 
+           data-aos="flip-up" data-aos-delay="300">
+        <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl animate-spin-slow">
+          02
+        </div>
+        <WaterAlert class="w-16 h-16 text-primary mb-4 animate-drip" />
+        <h3 class="text-2xl font-bold text-secondary mb-4">HUMEDAD Y FILTRACIONES</h3>
+        <p class="text-gray-600">Las manchas de humedad y goteras son más que un problema estético. Indican filtraciones que pueden comprometer la estructura y la salud de quienes viven allí.</p>
+      </div>
+    </div>
+
+    <!-- Problemas Funcionales -->
+    <div class="mb-16" data-aos="zoom-in" data-aos-delay="450">
+      <div class="relative p-8 bg-white text-black rounded-lg shadow-xl max-w-3xl mx-auto transform transition-all duration-500 hover:scale-102 hover:shadow-2xl">
+        <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl animate-spin-slow">
+          03
+        </div>
+        <FlashAlert class="w-16 h-16 mb-4 animate-spark" />
+        <h3 class="text-2xl font-bold mb-4">INSTALACIONES ELÉCTRICAS O DE PLOMERÍA OBSOLETAS</h3>
+        <p>Si tu sistema eléctrico o de plomería tiene más de 15 años, es hora de renovarlo. Evita riesgos de cortocircuitos, fugas o sobrecargas.</p>
+      </div>
+    </div>
+
+    <!-- Problemas Estéticos -->
+    <div class="max-w-4xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="600">
+      <div class="relative p-8 bg-white text-black rounded-lg shadow-xl max-w-3xl mx-auto transform transition-all duration-500 hover:scale-102 hover:shadow-2xl">
+        <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl animate-spin-slow">
+          04
+        </div>
+        <Brush class="w-16 h-16 text-primary mb-4 animate-paint" />
+          <h3 class="text-2xl font-bold mb-4">MATERIALES DESGASTADOS O DESACTUALIZADOS</h3>
+          <p>Pisos rayados, puertas hinchadas, pintura descascarada... Un cambio de materiales renovará la estética y mejorará el valor de tu hogar.</p>
+      </div>
+    </div>
+
+    <!-- Llamado a la Acción -->
+    <div class="text-center" data-aos="tada" data-aos-delay="750">
+      <div class="bg-secondary p-2 rounded-lg shadow-xl inline-block transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-heartbeat">
+        <h3 class="text-3xl font-bold text-white mb-6">¿TU HOGAR PRESENTA ALGUNA DE ESTAS SEÑALES?</h3>
+        <p class="text-xl text-primary mb-8">NO DEJES QUE LOS PROBLEMAS AVANCEN</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animaciones personalizadas */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-3deg); }
+    75% { transform: translateX(5px) rotate(3deg); }
+  }
+
+  @keyframes drip {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes spark {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes paint {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.05); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+
+  .animate-shake {
+    animation: shake 1.5s infinite;
+  }
+
+  .animate-drip {
+    animation: drip 2s ease-in-out infinite;
+  }
+
+  .animate-spark {
+    animation: spark 1s ease-in-out infinite;
+  }
+
+  .animate-paint {
+    animation: paint 2s ease-in-out infinite;
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  [data-aos] {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+</style>

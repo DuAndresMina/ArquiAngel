@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
 import Features from '../components/Features.astro';
-import Portfolio from '../components/Portfolio.astro';
+import ErroresRemodelacion from '../components/Errores.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-
+import RemodelacionUrgente from '../components/RemoUrgente.astro';
+import Banner from '../components/Banner.astro';
 const title = "AC Arquitectura - Servicios Profesionales de Remodelación en Cali";
 const description = "Diseñamos tus espacios, construimos tus sueños. Servicios profesionales de remodelación de casas, apartamentos y espacios comerciales en Cali, Colombia.";
 const url = "https://www.acarquitectura.com.co";
@@ -19,8 +20,10 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
     <Hero />
     <Features />
     <Services />
+    <RemodelacionUrgente />
+    <Banner />
     <Testimonials />
-    <!-- <Portfolio /> -->
+    <ErroresRemodelacion />
     <CTA />
     <WhatsAppButton />
   </main>

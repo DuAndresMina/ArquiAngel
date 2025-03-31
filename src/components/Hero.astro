@@ -1,64 +1,42 @@
-
-<section id="home" class="relative min-h-screen flex items-center justify-center">
-  <!-- Background image with overlay -->
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background -->
   <div class="absolute inset-0 z-0">
     <img 
       src="/banner.webp" 
       alt="Modern interior design" 
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover animate-zoom"
       width="1920"  
       height="1080"
     />
     <div class="absolute inset-0 bg-black/50"></div>
   </div>
 
-  <!-- Content -->
-  <div class="container mx-auto px-4 relative z-10 text-center flex flex-col items-center justify-center">
-    <div class="max-w-3xl" data-aos="fade-up">
-      <!-- Company Name (H1) -->
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
-        <span class="block">AC Arquitectura & Construcción SAS</span>
-        <span class="block text-2xl md:text-3xl font-light text-gray-200 mt-2">
-          Transformamos tus espacios con diseño y calidad
+  <!-- Contenido principal -->
+  <div class="container mx-auto px-4 relative z-10 text-center">
+    <div class="max-w-3xl mx-auto">
+      <!-- Título principal corregido -->
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 overflow-hidden">
+        
+        <span class="animated-title block">
+          <span class="title-text">AC Arquitectura & Construcción</span>
         </span>
       </h1>
 
-      <!-- Main Tagline -->
-      <h2 class="text-xl md:text-2xl font-medium text-gray-200 mb-8">
+      <!-- Subtítulo -->
+      <h2 class="text-xl md:text-2xl font-medium text-gray-200 mb-8 animate-fade-in delay-300">
         Diseñamos tus espacios, construimos tus sueños.
       </h2>
 
-      <!-- Call-to-action buttons -->
-      <div class="flex flex-col sm:flex-row justify-center gap-4 w-full">
-        <a 
-          href="#servicios" 
-          class="btn w-full sm:w-auto mx-auto sm:mx-0"
-        >
-          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 277 62">
-            <defs>
-              <linearGradient id="grad1">
-                <stop offset="0%" stop-color="#F27405"/>
-                <stop offset="100%" stop-color="#F27405" />
-              </linearGradient>
-            </defs>
-            <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-          </svg>
-          <span>Nuestros Servicios</span>
+      <!-- Botones funcionales -->
+      <div class="flex flex-col sm:flex-row justify-center gap-6 w-full">
+        <a href="#servicios" class="btn neon-hover">
+          <span class="btn-text">Nuestros Servicios</span>
+          <div class="hover-effect"></div>
         </a>
-        <a 
-          href="/contact" 
-          class="btn w-full sm:w-auto mx-auto sm:mx-0"
-        >
-          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 277 62">
-            <defs>
-              <linearGradient id="grad1">
-                <stop offset="0%" stop-color="#F27405"/>
-                <stop offset="100%" stop-color="#F27405" />
-              </linearGradient>
-            </defs>
-            <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-          </svg>
-          <span>Contáctanos</span>
+        
+        <a href="/contact" class="btn neon-hover">
+          <span class="btn-text">Contáctanos</span>
+          <div class="hover-effect"></div>
         </a>
       </div>
     </div>
@@ -66,77 +44,142 @@
 </section>
 
 <style>
-  /* Responsive container */
-  .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  /* Animación de título profesional */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
   }
 
-  /* Buttons */
+  .title-text {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(1em);
+    animation: title-reveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    background: linear-gradient(
+      to right,
+      #FFFFFF 0%,
+      #F27405 50%,
+      #FFFFFF 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes title-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(1em);
+      background-position: 200% center;
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      background-position: -200% center;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Ajustes responsive */
+  @media (max-width: 768px) {
+    .title-text {
+      animation-duration: 1.2s;
+    }
+  }
+
+  /* Animación de zoom suave */
+  @keyframes zoom {
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .animate-zoom {
+    animation: zoom 20s linear forwards;
+  }
+
+  /* Animaciones de aparición */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  /* Botones funcionales */
   .btn {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 277px; /* Ancho base para desktop */
-    height: 50px;
-    font-size: 1em;
+    padding: 1rem 2rem;
     font-weight: bold;
-    text-align: center;
     text-transform: uppercase;
-    background-color: transparent;
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    font-size: 17px;
-    letter-spacing: 0.045em;
-    color: black; /* Cambia el color del texto a negro */
-    overflow: hidden; /* Asegura que el SVG no se desborde */
+    color: white;
+    border: 2px solid #F27405;
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
   }
 
-  .btn svg {
+  .hover-effect {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Asegura que el SVG ocupe todo el ancho del botón */
-    height: 100%; /* Asegura que el SVG ocupe todo el alto del botón */
-    pointer-events: none; /* Evita que el SVG interfiera con los clics */
+    background: rgba(242, 116, 5, 0.2);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
   }
 
-  .btn svg rect {
-    stroke-width: 4;
-    stroke-dasharray: 353, 0;
-    stroke-dashoffset: 0;
-    transition: all 600ms ease;
+  .btn:hover .hover-effect {
+    transform: translate(-50%, -50%) scale(3);
   }
 
-  .btn span {
+  .neon-hover:hover {
+    box-shadow: 0 0 15px rgba(242, 116, 5, 0.5);
+  }
+
+  .btn-text {
     position: relative;
-    z-index: 1; /* Asegura que el texto esté sobre el SVG */
-    background: none; /* Elimina el gradiente de fondo */
-    color: rgb(255, 255, 255); /* Cambia el color del texto a negro */
+    z-index: 1;
   }
 
-  .btn:hover svg rect {
-    stroke-width: 4;
-    stroke-dasharray: 196, 543;
-    stroke-dashoffset: 437;
-  }
-
-  /* Adjustments for mobile */
-  .flex.flex-col > .btn {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%; /* Botones ocupan todo el ancho en móviles */
-  }
-
-  .flex.sm\:flex-row.justify-center > .btn {
-    margin-left: 0;
-    margin-right: 0;
-    width: auto; /* Restaura el ancho original en desktop */
+  /* Centrar botones en pantallas pequeñas */
+  @media (max-width: 640px) {
+    .btn {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
   }
 </style>
+
+<script>
+// Inicialización necesaria para las animaciones
+document.addEventListener('DOMContentLoaded', () => {
+  // Activar animaciones de aparición
+  document.querySelectorAll('.animate-fade-in').forEach(el => {
+    el.style.opacity = '1';
+  });
+  
+  // Configurar AOS si está siendo usado
+  if(typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }
+});
+</script>
