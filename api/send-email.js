@@ -3,57 +3,90 @@ import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import compression from 'compression';
-import path from 'path'; // Importación añadida
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
-
-// Habilita la compresión
-app.use(compression());
-
-// Configura los encabezados de caché para recursos estáticos
-app.use(express.static(path.join(__dirname, 'dist'), {
-  maxAge: '1y', // Cachea los recursos estáticos por un año
-  etag: false
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://acarquitectura.com.co'],
 }));
-
-// Middleware para parsear datos del formulario
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Método no permitido' });
-  }
-
-  const { name, email, service, message, number } = req.body;
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    secure: process.env.PORT === '465', // Asegura que secure sea true solo si el puerto es 465
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER,
-    subject: `Consulta de ${name} - ${service}`,
-    text: `Nombre: ${name}\nEmail: ${email}\nServicio: ${service}\nNúmero: ${number}\nMensaje: ${message}`,
-  };
-
+// Endpoint para manejar solicitudes POST
+app.post('/api/send-email', async (req, res) => {
+  console.log('Solicitud recibida en /api/send-email');
   try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.HOST,
+      port: 465, // Puerto SMTP fijo para conexiones seguras
+      secure: true, // Asegura que se use SSL/TLS
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      },
+    });
+
+    const isARCO = req.body.formType === 'arco';
+
+    let mailOptions;
+
+    if (isARCO) {
+      const { nombre, identificacion, tipo_solicitud, descripcion } = req.body;
+      if (!nombre || !identificacion || !tipo_solicitud || !descripcion) {
+        return res.status(400).json({ message: 'Faltan campos requeridos para la solicitud ARCO' });
+      }
+
+      mailOptions = {
+        from: process.env.GMAIL_USER,
+        to: process.env.GMAIL_USER,
+        subject: `Solicitud ARCO - ${tipo_solicitud}`,
+        text: `Solicitud ARCO recibida:\n
+               Nombre: ${nombre}\n
+               Identificación: ${identificacion}\n
+               Tipo de Solicitud: ${tipo_solicitud}\n
+               Descripción: ${descripcion}\n\n
+               Fecha: ${new Date().toLocaleString()}`,
+      };
+    } else {
+      const { name, email, service, message, number } = req.body;
+      if (!name || !email || !service || !message) {
+        return res.status(400).json({ message: 'Faltan campos requeridos' });
+      }
+
+      mailOptions = {
+        from: process.env.GMAIL_USER,
+        to: process.env.GMAIL_USER,
+        subject: `Consulta de ${name} - ${service}`,
+        text: `Nueva consulta recibida:\n
+               Nombre: ${name}\n
+               Email: ${email}\n
+               Teléfono: ${number || 'No proporcionado'}\n
+               Servicio: ${service}\n
+               Mensaje: ${message}\n\n
+               Fecha: ${new Date().toLocaleString()}`,
+      };
+    }
+
+    // Enviar correo
+    console.log('Enviando correo con las siguientes opciones:', mailOptions);
     await transporter.sendMail(mailOptions);
-    return res.status(200).json({ message: 'Correo enviado correctamente.' });
+
+    res.status(200).json({
+      message: isARCO
+        ? 'Solicitud ARCO enviada correctamente'
+        : 'Consulta enviada correctamente',
+    });
   } catch (error) {
     console.error('Error al enviar el correo:', error);
-    return res.status(500).json({ message: 'Error al enviar el correo.' });
+    res.status(500).json({
+      message: isARCO
+        ? 'Error al enviar la solicitud ARCO'
+        : 'Error al enviar la consulta',
+    });
   }
-}
+});
+
+// Exporta el handler para que Vercel lo use
+export default app;
