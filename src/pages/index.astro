@@ -4,9 +4,11 @@ import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
 import Features from '../components/Features.astro';
 import Portfolio from '../components/Portfolio.astro';
+import ErroresRemodelacion from '../components/Errores.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import RemodelacionUrgente from '../components/RemoUrgente.astro';
 
 const title = "AC Arquitectura - Servicios Profesionales de Remodelación en Cali";
 const description = "Diseñamos tus espacios, construimos tus sueños. Servicios profesionales de remodelación de casas, apartamentos y espacios comerciales en Cali, Colombia.";
@@ -19,7 +21,17 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
     <Hero />
     <Features />
     <Services />
+    <RemodelacionUrgente />
+    <div class="bg-primary py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">¿QUÉ ESPERAS PARA DAR EL PRIMER PASO PARA REMODELAR TU VIVIENDA?</h2>
+          <div class="h-1 w-24 bg-white mx-auto mt-6"></div>
+        </div>
+      </div>
     <Testimonials />
+    <ErroresRemodelacion />
+
     <!-- <Portfolio /> -->
     <CTA />
     <WhatsAppButton />
