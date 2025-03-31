@@ -2,51 +2,164 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-secondary text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <img src="/acarquitectura-logoblanco.webp" loading="lazy" alt="AC-Arquitectura Logo" class="h-12 mb-4" />
-        <p class="text-gray-300">
+<footer class="bg-secondary text-white py-12 relative overflow-hidden">
+  <!-- Efecto de partículas decorativas -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute w-32 h-32 bg-primary rounded-full -top-16 -left-16 animate-pulse"></div>
+    <div class="absolute w-48 h-48 bg-primary/20 rounded-full -bottom-24 -right-24 animate-spin-slow"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8" data-aos="fade-up">
+      <!-- Logo con animación -->
+      <div data-aos="zoom-in" data-aos-delay="100">
+        <img src="/acarquitectura-logoblanco.webp" 
+             loading="lazy" 
+             alt="AC-Arquitectura Logo" 
+             class="h-12 mb-4 transform transition hover:scale-105 hover:rotate-3" />
+        <p class="text-gray-300 animate-fade-in">
           Transforma tu espacio con nuestros servicios profesionales de remodelación.
         </p>
       </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Contacto</h3>
+
+      <!-- Sección de Contacto -->
+      <div data-aos="fade-right" data-aos-delay="150">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+          <span>📞</span>
+          <span class="ml-2">Contacto</span>
+        </h3>
         <ul class="space-y-2 text-gray-300">
-          <li>Teléfono: +57 314 6755310</li>
-          <li>Email: ac.arteconstructivo@gmail.com</li>
+          <li class="hover:text-primary transition-all transform hover:translate-x-2">
+            <a href="tel:+573146755310">+57 314 6755310</a>
+          </li>
+          <li class="hover:text-primary transition-all transform hover:translate-x-2">
+            <a href="mailto:ac.arteconstructivo@gmail.com">ac.arteconstructivo@gmail.com</a>
+          </li>
         </ul>
       </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Enlaces</h3>
+
+      <!-- Enlaces con animación escalonada -->
+      <div data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+          <span>🔗</span>
+          <span class="ml-2">Enlaces</span>
+        </h3>
         <ul class="space-y-2 text-gray-300">
-          <li><a href="/quienes-somos" class="hover:text-primary transition-colors">Quiénes Somos</a></li>
-          <li><a href="/aviso-legal" class="hover:text-primary transition-colors">Aviso Legal</a></li>
-          <li><a href="/politica-cookies" class="hover:text-primary transition-colors">Política de Cookies
-          <li><button type="button" data-cc="show-preferencesModal">Actualizar cookies</button>
-            </li></a></li>
-          
-          <li><a href="/politica-privacidad" class="hover:text-primary transition-colors">Política de Privacidad</a></li>
+          {['Quiénes Somos', 'Aviso Legal', 'Política de Cookies', 'Política de Privacidad'].map((item, index) => (
+            <li 
+              key={index}
+              class="opacity-0 animate-slide-in"
+              style={`animation-delay: ${index * 100 + 300}ms`}
+            >
+              <a 
+                href={`/${item.toLowerCase().replace(/ /g, '-')}`} 
+                class="hover:text-primary transition-all flex items-center group"
+              >
+                <span class="inline-block w-2 h-2 bg-primary rounded-full mr-2 group-hover:animate-pulse"></span>
+                {item}
+              </a>
+            </li>
+          ))}
+          <li class="opacity-0 animate-slide-in" style="animation-delay: 700ms">
+            <button type="button" data-cc="show-preferencesModal" class="hover:text-primary transition-all">
+              🔄 Actualizar cookies
+            </button>
+          </li>
         </ul>
       </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Síguenos</h3>
+
+      <!-- Redes Sociales con hover effects -->
+      <div data-aos="fade-left" data-aos-delay="250">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+          <span>👥</span>
+          <span class="ml-2">Síguenos</span>
+        </h3>
         <div class="flex space-x-4">
-          <a href="https://www.facebook.com/ac.arquitecurayconstruccion" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-            <i class="fab fa-facebook fa-2x"></i>
+          <a href="https://www.facebook.com/ac.arquitecurayconstruccion" 
+             target="_blank" 
+             class="social-icon transform hover:scale-125 hover:text-primary transition-all">
+             <i class="fab fa-facebook fa-2x"></i>
           </a>
-          <a href="https://www.instagram.com/ac_arquitecturayconstrucciones" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-            <i class="fab fa-instagram fa-2x"></i>
+          <a href="https://www.instagram.com/ac_arquitecturayconstrucciones" 
+             target="_blank" 
+             class="social-icon transform hover:scale-125 hover:text-primary transition-all">
+             <i class="fab fa-instagram fa-2x"></i>
           </a>
         </div>
       </div>
     </div>
-    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-300">
-      <p>&copy; {currentYear} AC Arquitectura. Todos los derechos reservados.</p>      
-      <p class="mt-4 text-xs">
-        Desarrollado por <a href="https://www.linkedin.com/in/duvan-mina/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Duvan Mina</a>.
+
+    <!-- Sección de Copyright animada -->
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center" data-aos="fade-up" data-aos-delay="300">
+      <p class="text-gray-300 animate-pulse-slow">&copy; {currentYear} AC Arquitectura. Todos los derechos reservados.</p>      
+      <p class="mt-4 text-xs text-gray-400 hover:text-primary transition-all">
+        Desarrollado por 
+        <a href="https://www.linkedin.com/in/duvan-mina/" 
+           target="_blank" 
+           class="font-bold gradient-text animate-gradient">
+           Duvan Mina
+        </a>
       </p>
     </div>
   </div>
 </footer>
+
+<style>
+  /* Animaciones personalizadas */
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.6s ease-out forwards;
+  }
+
+  .animate-gradient {
+    background: linear-gradient(45deg, #F27405, #FFB273, #F27405);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient 3s linear infinite;
+  }
+
+  .social-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Efecto hover para los enlaces */
+  .hover\:animate-pulse:hover {
+    animation: pulse 1s infinite;
+  }
+</style>
