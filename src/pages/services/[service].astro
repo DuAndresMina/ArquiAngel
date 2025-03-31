@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
-import 'photoswipe/style.css';
 
 const services = {
   'servicio-basico': {
@@ -24,13 +23,6 @@ const services = {
       'Inspección de garantía de calidad.',
       'Cobertura de garantía básica.'
     ],
-    images: [
-      '/services/basic/1.jpg',
-      '/services/basic/2.jpg',
-      '/services/basic/3.jpg',
-      '/services/basic/4.jpg'
-    ],
-    video: '/services/basic/overview.mp4',
     url: 'https://www.acarquitectura.com.co/services/servicio-basico',
     image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   },
@@ -54,13 +46,6 @@ const services = {
       'Gestión de proyectos.',
       'Cobertura de garantía extendida.'
     ],
-    images: [
-      '/services/enhanced/1.jpg',
-      '/services/enhanced/2.jpg',
-      '/services/enhanced/3.jpg',
-      '/services/enhanced/4.jpg'
-    ],
-    video: '/services/enhanced/overview.mp4',
     url: 'https://www.acarquitectura.com.co/services/servicio-plus',
     image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   },
@@ -84,13 +69,6 @@ const services = {
       'Gerente de proyecto dedicado.',
       'Paquete de garantía integral.'
     ],
-    images: [
-      '/services/premium/1.jpg',
-      '/services/premium/2.jpg',
-      '/services/premium/3.jpg',
-      '/services/premium/4.jpg'
-    ],
-    video: '/services/premium/overview.mp4',
     url: 'https://www.acarquitectura.com.co/services/servicio-premium',
     image: 'https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993'
   }
@@ -119,38 +97,6 @@ const serviceData = services[service];
         <p class="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
           {serviceData.description}
         </p>
-        
-        <!-- Gallery Grid -->
-        <!-- <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
-          {serviceData.images.map((image, index) => (
-            <a
-              href={image}
-              data-pswp-width="1600"
-              data-pswp-height="1000"
-              class={`gallery-item ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
-            >
-              <img 
-                src={image}
-                alt={`${serviceData.title} - Image ${index + 1}`}
-                class={`w-full h-full object-cover rounded-lg ${index === 0 ? 'min-h-[400px]' : 'h-48'}`}
-                loading={index === 0 ? 'eager' : 'lazy'}
-              />
-            </a>
-          ))}
-        </div> -->
-
-        <!-- {serviceData.video && (
-          <div class="mb-8" data-aos="fade-up" data-aos-delay="150">
-            <video
-              class="w-full rounded-lg"
-              controls
-              poster={serviceData.images[0]}
-            >
-              <source src={serviceData.video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )} -->
 
         <div class="prose max-w-none" data-aos="fade-up" data-aos-delay="200">
           <p class="text-gray-600 whitespace-pre-line mb-8">

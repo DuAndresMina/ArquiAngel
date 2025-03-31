@@ -165,21 +165,3 @@
     }
   }
 </style>
-
-<script>
-// Inicialización necesaria para las animaciones
-document.addEventListener('DOMContentLoaded', () => {
-  // Activar animaciones de aparición
-  document.querySelectorAll('.animate-fade-in').forEach(el => {
-    el.style.opacity = '1';
-  });
-  
-  // Configurar AOS si está siendo usado
-  if(typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  }
-});
-</script>
