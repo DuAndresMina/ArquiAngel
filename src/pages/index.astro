@@ -8,11 +8,12 @@ import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import RemodelacionUrgente from '../components/RemoUrgente.astro';
-
+import Banner from '../components/Banner.astro';
 const title = "AC Arquitectura - Servicios Profesionales de Remodelación en Cali";
 const description = "Diseñamos tus espacios, construimos tus sueños. Servicios profesionales de remodelación de casas, apartamentos y espacios comerciales en Cali, Colombia.";
 const url = "https://www.acarquitectura.com.co";
 const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-b126-db660c9c66b7.svg?token=V8LpduB_Z3vP5T3yB26RGfZoguaeB_hkrPJ_Qc8xqrw&height=130&width=300&expires=33275810993";
+
 ---
 
 <Layout title={title} description={description} url={url} image={image}>
@@ -21,17 +22,9 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
     <Features />
     <Services />
     <RemodelacionUrgente />
-    <div class="bg-primary py-20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20" data-aos="fade-up">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">¿QUÉ ESPERAS PARA DAR EL PRIMER PASO PARA REMODELAR TU VIVIENDA?</h2>
-          <div class="h-1 w-24 bg-white mx-auto mt-6"></div>
-        </div>
-      </div>
+    <Banner />
     <Testimonials />
     <ErroresRemodelacion />
-
-    <!-- <Portfolio /> -->
     <CTA />
     <WhatsAppButton />
   </main>
