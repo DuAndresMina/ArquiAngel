@@ -32,11 +32,19 @@ const features = [
 ];
 ---
 
-<section class="py-20 bg-neutral">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-primary mb-4">¿Por qué elegirnos?</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+<section class="py-20 bg-neutral relative overflow-hidden">
+  <!-- Elementos decorativos de fondo -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="shape-1 absolute w-64 h-64 bg-primary rounded-full blur-xl animate-float-1"></div>
+    <div class="shape-2 absolute w-48 h-48 bg-secondary rounded-full blur-xl animate-float-2"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16" data-aos="zoom-in">
+      <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+        <span class="animated-gradient-text">¿Por qué elegirnos?</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
         Descubre lo que nos hace diferentes
       </p>
     </div>
@@ -44,15 +52,99 @@ const features = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {features.map((feature, index) => (
         <div 
-          class="text-center p-6 bg-white rounded-lg shadow-lg"
-          data-aos="fade-up"
-          data-aos-delay={index * 100}
+          class="feature-card group relative p-8 bg-white rounded-2xl shadow-xl transition-all duration-500 hover:transform hover:-translate-y-4"
+          data-aos="flip-up"
+          data-aos-delay={index * 150}
         >
-          <div class="text-primary mb-4 flex justify-center" set:html={feature.icon} />
-          <h3 class="text-xl font-bold mb-2">{feature.title}</h3>
-          <p class="text-gray-600">{feature.description}</p>
+          <!-- Efecto de brillo al hover -->
+          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/10 to-secondary/10"></div>
+          
+          <div class="icon-container mb-6 relative">
+            <div class="text-primary flex justify-center" set:html={feature.icon} />
+            <div class="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </div>
+          
+          <h3 class="text-xl font-bold mb-4 text-gray-800 group-hover:text-primary transition-colors">
+            {feature.title}
+          </h3>
+          <p class="text-gray-600 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity">
+            {feature.description}
+          </p>
+          
+          <!-- Efecto de borde animado -->
+          <div class="absolute inset-0 border-2 border-primary/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  /* Animaciones personalizadas */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes gradient-pulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animated-gradient-text {
+    background: linear-gradient(
+      45deg,
+      #F27405 25%,
+      #282936 50%,
+      #F27405 75%
+    );
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient-pulse 8s ease infinite;
+  }
+
+  .animate-float-1 {
+    animation: float 8s ease-in-out infinite;
+    top: 20%;
+    left: 10%;
+  }
+
+  .animate-float-2 {
+    animation: float 7s ease-in-out infinite 2s;
+    top: 60%;
+    right: 15%;
+  }
+
+  .feature-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  .icon-container svg {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .feature-card:hover .icon-container svg {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 6px 8px rgba(242, 116, 5, 0.2));
+  }
+
+  [data-aos="flip-up"] {
+    transform: rotateX(15deg) translateY(50px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  [data-aos="flip-up"].aos-animate {
+    transform: rotateX(0) translateY(0);
+    opacity: 1;
+  }
+</style>
