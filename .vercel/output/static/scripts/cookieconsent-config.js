@@ -181,7 +181,7 @@ CookieConsent.run({
                     acceptAllBtn: 'Aceptar todas',
                     acceptNecessaryBtn: 'Rechazar todas',
                     showPreferencesBtn: 'Administrar preferencias individuales',
-                    footer: "<a href=\"https://www.acarquitectura.com.co/politica-privacidad\">Política de privacidad</a>\n<a href=\"https://www.acarquitectura.com.co/politica-cookies\">Politica de Cookies</a>"
+                    footer: "<a href=\"https://www.acarquitectura.com.co/politica-de-privacidad\">Política de privacidad</a>\n<a href=\"https://www.acarquitectura.com.co/politica-de-cookies\">Politica de Cookies</a>"
                 },
                 preferencesModal: {
                     title: 'Administrar preferencias de cookies',
