@@ -1,0 +1,116 @@
+---
+// src/components/ARCOForm.astro
+
+const { userEmail } = Astro.props;
+---
+
+<form 
+  class="max-w-xl mx-auto space-y-6" 
+  id="arco-form" 
+  method="POST" 
+  action="https://acarquitectura.com.co/api/send-email"
+>
+  <input type="hidden" name="formType" value="arco">
+
+  <div class="mb-6">
+    <label class="block text-gray-700 mb-2 font-medium">Nombre completo *</label>
+    <input
+      type="text"
+      name="nombre"
+      class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20"
+      required
+      aria-required="true"
+    >
+  </div>
+
+  <div class="mb-6">
+    <label class="block text-gray-700 mb-2 font-medium">Número de identificación *</label>
+    <input
+      type="text"
+      name="identificacion"
+      class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20"
+      pattern="[0-9]{6,12}"
+      title="Ingrese un número de identificación válido"
+      required
+      aria-required="true"
+    >
+  </div>
+
+  <div class="mb-6">
+    <label class="block text-gray-700 mb-2 font-medium">Tipo de solicitud *</label>
+    <select 
+      name="tipo_solicitud" 
+      class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20"
+      required
+      aria-required="true"
+    >
+      <option value="">Seleccione un derecho...</option>
+      <option value="acceso">Acceso a mis datos</option>
+      <option value="rectificacion">Rectificación de información</option>
+      <option value="cancelacion">Cancelación de datos</option>
+      <option value="oposicion">Oposición al tratamiento</option>
+    </select>
+  </div>
+
+  <div class="mb-6">
+    <label class="block text-gray-700 mb-2 font-medium">Descripción detallada *</label>
+    <textarea 
+      name="descripcion" 
+      rows="5" 
+      class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20"
+      placeholder="Describa su solicitud con el mayor detalle posible..."
+      required
+      aria-required="true"
+    ></textarea>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-sm text-gray-500">
+      Al enviar esta solicitud, acepta nuestro 
+      <a href="/politica-privacidad" class="text-primary hover:underline">tratamiento de datos</a>
+    </p>
+  </div>
+
+  <button 
+    type="submit" 
+    class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-secondary transition-colors"
+  >
+    <i class="fas fa-paper-plane mr-2"></i>Enviar Solicitud
+  </button>
+
+  <div id="form-message" class="hidden mt-4 p-4 rounded-lg text-center"></div>
+</form>
+
+<script>
+document.getElementById('arco-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const form = e.target;
+  const formData = new FormData(form);
+  const messageDiv = document.getElementById('form-message');
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(formData))
+    });
+
+    const result = await response.json();
+    
+    messageDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+    if (response.ok) {
+      messageDiv.classList.add('bg-green-100', 'text-green-700');
+      messageDiv.textContent = '✅ ' + result.message;
+      form.reset();
+    } else {
+      messageDiv.classList.add('bg-red-100', 'text-red-700');
+      messageDiv.textContent = '❌ ' + (result.message || 'Error al enviar la solicitud');
+    }
+  } catch (error) {
+    messageDiv.classList.remove('hidden');
+    messageDiv.classList.add('bg-red-100', 'text-red-700');
+    messageDiv.textContent = '❌ Error de conexión. Intente nuevamente.';
+  }
+});
+</script>
