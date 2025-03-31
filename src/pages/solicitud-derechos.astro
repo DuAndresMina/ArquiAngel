@@ -1,0 +1,46 @@
+---
+// src/pages/solicitud-derechos.astro
+
+import Layout from '../layouts/Layout.astro';
+import ARCOForm from '../components/ARCOForm.astro';
+
+const title = "Ejercicio de Derechos ARCO";
+const description = "Solicite acceso, rectificación, cancelación u oposición de sus datos personales";
+const url = "https://www.acarquitectura.com.co/solicitud-derechos";
+---
+
+<Layout {title} {description} {url}>
+  <main class="pt-20 bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+      <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 md:p-12">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-primary mb-4">Derechos ARCO</h1>
+          <p class="text-gray-600">De acuerdo con la Ley 1581 de 2012 de Protección de Datos</p>
+        </div>
+
+        <div class="mb-8 bg-blue-50 p-4 rounded-lg">
+          <h2 class="text-xl font-semibold text-primary mb-2">📌 Instrucciones importantes:</h2>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Complete todos los campos obligatorios (*)</li>
+            <li>Proporcione información veraz y completa</li>
+            <li>Recibirá respuesta en un plazo máximo de 10 días hábiles</li>
+            <li>Para verificar su identidad, nos contactaremos vía correo electrónico</li>
+          </ul>
+        </div>
+
+        <ARCOForm />
+
+        <div class="mt-8 text-center text-sm text-gray-500">
+          <p>¿Necesita ayuda? Contáctenos al 
+            <a href="tel:+573146755310" class="text-primary hover:underline">+57 314 6755310</a>
+          </p>
+          <p class="mt-2">
+            Consulte nuestra 
+            <a href="/politica-privacidad" class="text-primary hover:underline">Política de Privacidad</a> 
+            para más información
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
