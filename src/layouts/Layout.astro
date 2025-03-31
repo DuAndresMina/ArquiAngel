@@ -2,7 +2,8 @@
 import '@fontsource/poppins';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-
+import '../styles/global.css';
+import 'aos/dist/aos.css';
 interface Props {
   title: string;
   description: string;
@@ -70,7 +71,6 @@ const { title, description, url, image } = Astro.props;
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
 
-
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -115,6 +115,7 @@ const { title, description, url, image } = Astro.props;
     
     <!-- CookieConsent -->
     <script type="module" src="/scripts/cookieconsent-config.js"></script>
+    
 
     <Navbar />
     <slot />
