@@ -52,7 +52,12 @@ const currentYear = new Date().getFullYear();
               style={`animation-delay: ${index * 100 + 300}ms`}
             >
               <a 
-                href={`/${item.toLowerCase().replace(/ /g, '-')}`} 
+                href={`/${item
+  .toLowerCase()
+  .normalize("NFD") // Descompone caracteres acentuados (é → e + ´)
+  .replace(/[\u0300-\u036f]/g, '') // Elimina los acentos
+  .replace(/[^a-z0-9- ]/g, '') // Elimina caracteres especiales
+  .replace(/ /g, '-')}`}
                 class="hover:text-primary transition-all flex items-center group"
               >
                 <span class="inline-block w-2 h-2 bg-primary rounded-full mr-2 group-hover:animate-pulse"></span>
