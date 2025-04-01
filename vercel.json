@@ -3,7 +3,7 @@
     {
       "source": "/(.*)",
       "has": [
-        { "type": "host", "value": "arqui-angel.vercel.app" }
+        { "type": "host", "value": "acarquitectura.com.co" }
       ],
       "destination": "https://www.acarquitectura.com.co/$1",
       "permanent": true

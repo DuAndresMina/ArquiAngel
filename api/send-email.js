@@ -13,7 +13,10 @@ app.use(cors({
   origin: ['https://www.acarquitectura.com.co', 'https://acarquitectura.com.co'], // Permitir estos orígenes
   methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
   allowedHeaders: ['Content-Type'], // Encabezados permitidos
+  credentials: true, // Permitir cookies y encabezados de autenticación
 }));
+
+app.options('*', cors()); // Manejar solicitudes preflight
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
