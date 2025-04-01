@@ -3,32 +3,32 @@ import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import compression from 'compression';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import serverless from 'serverless-http';
 
 dotenv.config();
 
+// Reemplazo de __dirname en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 
-// Configurar CORS para permitir solicitudes desde dominios específicos
-app.use(cors({
-  origin: ['https://www.acarquitectura.com.co', 'https://acarquitectura.com.co'], // Permitir estos orígenes
-  methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
-  allowedHeaders: ['Content-Type'], // Encabezados permitidos
-  credentials: true, // Permitir cookies y encabezados de autenticación
-}));
-
-app.options('*', cors()); // Manejar solicitudes preflight
-
+// Configurar Middlewares
+app.use(cors());
+app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Endpoint para manejar solicitudes POST
 app.post('/api/send-email', async (req, res) => {
-  console.log('Solicitud recibida en /api/send-email');
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.HOST,
-      port: 465, // Puerto SMTP fijo para conexiones seguras
-      secure: true, // Asegura que se use SSL/TLS
+      port: 465, // Puerto SMTP para conexiones seguras
+      secure: true,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
@@ -36,7 +36,6 @@ app.post('/api/send-email', async (req, res) => {
     });
 
     const isARCO = req.body.formType === 'arco';
-
     let mailOptions;
 
     if (isARCO) {
@@ -77,7 +76,6 @@ app.post('/api/send-email', async (req, res) => {
     }
 
     // Enviar correo
-    console.log('Enviando correo con las siguientes opciones:', mailOptions);
     await transporter.sendMail(mailOptions);
 
     res.status(200).json({
@@ -95,5 +93,5 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
-// Exporta el handler para que Vercel lo use
-export default app;
+// No se llama a app.listen; en vez de eso exportamos el handler serverless
+export default serverless(app);
