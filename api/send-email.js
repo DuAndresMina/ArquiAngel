@@ -8,9 +8,13 @@ dotenv.config();
 
 const app = express();
 
+// Configurar CORS para permitir solicitudes desde dominios específicos
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://acarquitectura.com.co'],
+  origin: ['https://www.acarquitectura.com.co', 'https://acarquitectura.com.co'], // Permitir estos orígenes
+  methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
+  allowedHeaders: ['Content-Type'], // Encabezados permitidos
 }));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
