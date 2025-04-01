@@ -91,14 +91,14 @@ const serviceData = services[service];
     <div class="container mx-auto px-4 py-12">
       <div class="max-w-6xl mx-auto">
         <!-- Encabezado con efecto parallax -->
-        <div class="relative overflow-hidden rounded-2xl mb-12 h-[400px]" data-aos="zoom-in">
+        <div class="relative overflow-hidden rounded-2xl mb-12 h-[400px]">
           <div class="absolute inset-0 bg-black/30"></div>
           
           <div class="absolute bottom-0 left-0 right-0 p-8 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg" >
               {serviceData.title}
             </h1>
-            <p class="text-xl text-gray-200 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto">
               {serviceData.description}
             </p>
           </div>
@@ -106,18 +106,18 @@ const serviceData = services[service];
         
         <!-- Contenido principal -->
         <div class="grid md:grid-cols-2 gap-12 mb-16">
-          <div class="prose max-w-none" data-aos="fade-right">
+          <div class="prose max-w-none" >
             <h2 class="text-3xl font-bold text-primary mb-6">Descripción Completa</h2>
             <div class="space-y-6 text-gray-600">
               {serviceData.fullDescription.split('\n').map((line, index) => (
-                <p class="border-l-4 border-secondary pl-4 animate-fade-in" data-aos-delay={index * 50}>
+                <p class="border-l-4 border-secondary pl-4 animate-fade-in">
                   {line.trim()}
                 </p>
               ))}
             </div>
           </div>
 
-          <div data-aos="fade-left">
+          <div>
             <div class="bg-white p-8 rounded-2xl shadow-xl sticky top-24">
               <h2 class="text-3xl font-bold text-primary mb-6">Beneficios Clave</h2>
               <ul class="space-y-4">
@@ -137,7 +137,7 @@ const serviceData = services[service];
         </div>
 
         <!-- CTA Section -->
-        <div class="text-center bg-gradient-to-r from-primary to-secondary p-1 rounded-2xl mb-12" data-aos="zoom-in">
+        <div class="text-center bg-gradient-to-r from-primary to-secondary p-1 rounded-2xl mb-12">
           <div class="bg-white rounded-xl p-8">
             <h3 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Transformar tu Espacio?</h3>
             <p class="text-gray-600 mb-6 max-w-xl mx-auto">
@@ -163,7 +163,7 @@ const serviceData = services[service];
         </div>
 
         <!-- Proceso de Trabajo -->
-        <div class="mb-12" data-aos="fade-up">
+        <div class="mb-12">
           <h2 class="text-3xl font-bold text-primary mb-8 text-center">Nuestro Proceso</h2>
           <div class="grid md:grid-cols-4 gap-8">
             {[
@@ -173,8 +173,7 @@ const serviceData = services[service];
               ['Entrega Final', 'fas fa-home']
             ].map(([title, icon], index) => (
               <div class="text-center p-6 bg-white rounded-xl shadow-lg transform transition-all hover:scale-105" 
-                   data-aos="zoom-in" 
-                   data-aos-delay={index * 100}>
+>
                 <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i class={`${icon} text-2xl text-white`}></i>
                 </div>

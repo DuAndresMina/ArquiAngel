@@ -10,9 +10,9 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <div class="container mx-auto px-4 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8" data-aos="fade-up">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- Logo con animación -->
-      <div data-aos="zoom-in" data-aos-delay="100">
+      <div>
         <img src="/acarquitectura-logoblanco.webp" 
              loading="lazy" 
              alt="AC-Arquitectura Logo" 
@@ -23,7 +23,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Sección de Contacto -->
-      <div data-aos="fade-right" data-aos-delay="150">
+      <div>
         <h3 class="text-xl font-bold mb-4 flex items-center">
           <span>📞</span>
           <span class="ml-2">Contacto</span>
@@ -39,7 +39,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Enlaces con animación escalonada -->
-      <div data-aos="fade-up" data-aos-delay="200">
+      <div>
         <h3 class="text-xl font-bold mb-4 flex items-center">
           <span>🔗</span>
           <span class="ml-2">Enlaces</span>
@@ -48,8 +48,7 @@ const currentYear = new Date().getFullYear();
           {['Quiénes Somos', 'Aviso Legal', 'Política de Cookies', 'Política de Privacidad'].map((item, index) => (
             <li 
               key={index}
-              class="opacity-0 animate-slide-in"
-              style={`animation-delay: ${index * 100 + 300}ms`}
+              class=""
             >
               <a 
                 href={`/${item
@@ -65,7 +64,7 @@ const currentYear = new Date().getFullYear();
               </a>
             </li>
           ))}
-          <li class="opacity-0 animate-slide-in" style="animation-delay: 700ms">
+          <li class="" style="animation-delay: 700ms">
             <button type="button" data-cc="show-preferencesModal" class="hover:text-primary transition-all">
               🔄 Actualizar cookies
             </button>
@@ -74,7 +73,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Redes Sociales con hover effects -->
-      <div data-aos="fade-left" data-aos-delay="250">
+      <div>
         <h3 class="text-xl font-bold mb-4 flex items-center">
           <span>👥</span>
           <span class="ml-2">Síguenos</span>
@@ -95,7 +94,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Sección de Copyright animada -->
-    <div class="mt-8 pt-8 border-t border-gray-700 text-center" data-aos="fade-up" data-aos-delay="300">
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center">
       <p class="text-gray-300 animate-pulse-slow">&copy; {currentYear} AC Arquitectura. Todos los derechos reservados.</p>      
       <p class="mt-4 text-xs text-gray-400 hover:text-primary transition-all">
         Desarrollado por 
@@ -110,17 +109,7 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
-  /* Animaciones personalizadas */
-  @keyframes slide-in {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+
 
   @keyframes gradient {
     0% { background-position: 0% 50%; }

@@ -11,9 +11,9 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
 <Layout title={title} description={description} url={url} image={image}>
   <main class="pt-20 bg-gradient-to-b from-white to-neutral-50">
     <div class="container mx-auto px-4 py-12">
-      <div class="max-w-4xl mx-auto" data-aos="fade-up">
+      <div class="max-w-4xl mx-auto" >
         <!-- Encabezado con icono -->
-        <div class="text-center mb-12" data-aos="zoom-in">
+        <div class="text-center mb-12" >
           <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-cookie-bite text-3xl text-white"></i>
           </div>
@@ -22,7 +22,7 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
         </div>
 
         <!-- Resumen clave -->
-        <div class="bg-primary/5 p-6 rounded-2xl mb-8 shadow-md" data-aos="fade-up">
+        <div class="bg-primary/5 p-6 rounded-2xl mb-8 shadow-md" >
           <div class="flex items-start gap-4">
             <i class="fas fa-info-circle text-primary text-2xl mt-1"></i>
             <div>
@@ -41,29 +41,11 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
           </div>
         </div>
 
-        <!-- Índice interactivo -->
-        <nav class="sticky top-20 bg-white shadow-lg rounded-xl p-6 mb-8 z-10" data-aos="fade-up">
-          <h2 class="text-xl font-bold text-primary mb-4">Contenido</h2>
-          <ul class="flex flex-wrap gap-4">
-            {['Qué son', 'Tipos', 'Google Analytics', 'Consentimientos', 'Gestión', 'Consentimiento'].map((item, index) => (
-              <li>
-                <a 
-                  href={`#seccion-${index + 1}`} 
-                  class="text-gray-600 hover:text-primary px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors"
-                  data-aos="fade-up" 
-                  data-aos-delay={index * 50}
-                >
-                  {index + 1}. {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
+      
         <!-- Contenido principal -->
         <div class="bg-white shadow-xl rounded-2xl p-8 md:p-12">
           <!-- Sección 1 -->
-          <section id="seccion-1" class="mb-12 scroll-mt-20" data-aos="fade-up">
+          <section id="seccion-1" class="mb-12 scroll-mt-20" >
             <div class="flex items-center gap-4 mb-6">
               <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center">
                 <i class="fas fa-question-circle text-primary text-xl"></i>
@@ -76,7 +58,7 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
           </section>
 
           <!-- Sección 2 -->
-          <section id="seccion-2" class="mb-12 scroll-mt-20" data-aos="fade-up">
+          <section id="seccion-2" class="mb-12 scroll-mt-20" >
             <div class="flex items-center gap-4 mb-6">
               <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center">
                 <i class="fas fa-tags text-primary text-xl"></i>
@@ -101,7 +83,7 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
           </section>
 
           <!-- Sección 3 -->
-          <section id="seccion-3" class="mb-12 scroll-mt-20" data-aos="fade-up">
+          <section id="seccion-3" class="mb-12 scroll-mt-20">
             <div class="flex items-center gap-4 mb-6">
               <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center">
                 <i class="fab fa-google text-primary text-xl"></i>
@@ -235,7 +217,6 @@ const image = "https://opengraph.b-cdn.net/production/images/e0540ec3-9987-4226-
     <button 
       data-cc="show-preferencesModal"
       class="fixed bottom-8 right-8 bg-primary text-white w-14 h-14 rounded-full shadow-xl hover:bg-secondary transition-all flex items-center justify-center"
-      data-aos="zoom-in"
       title="Configurar cookies"
     >
       <i class="fas fa-cookie-bite text-xl"></i>

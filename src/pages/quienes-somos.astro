@@ -38,7 +38,7 @@ const sections = [
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30"></div>
       </div>
-      <div class="relative text-center text-white z-10" data-aos="zoom-in">
+      <div class="relative text-center text-white z-10">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">Transformando espacios, construyendo sueños</h1>
         <div class="inline-block bg-primary/20 backdrop-blur-sm px-8 py-4 rounded-xl">
           <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto">
@@ -54,8 +54,6 @@ const sections = [
         {sections.map((section, index) => (
           <section 
             class={`group flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 md:gap-16`}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
           >
             <!-- Imagen con efecto hover -->
             <div class="lg:w-1/2 relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow">
@@ -90,18 +88,18 @@ const sections = [
     <!-- Sección de valores -->
     <div class="bg-primary/5 py-24">
       <div class="container mx-auto px-4">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-16">
           <h2 class="text-4xl font-bold text-primary mb-4">Nuestros Pilares</h2>
           <p class="text-gray-600 max-w-2xl mx-auto">Los fundamentos que guían cada proyecto</p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
+        <div class="grid md:grid-cols-3 gap-8">
           {[
             ['Innovación', 'fas fa-lightbulb', 'Soluciones creativas y tecnología de vanguardia'],
             ['Calidad', 'fas fa-award', 'Materiales premium y mano de obra especializada'],
             ['Transparencia', 'fas fa-handshake', 'Procesos claros y comunicación constante']
           ].map(([title, icon, text], i) => (
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all" data-aos="zoom-in" data-aos-delay={i * 100}>
+            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
               <div class="bg-primary w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                 <i class={`${icon} text-white text-2xl`}></i>
               </div>
