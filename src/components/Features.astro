@@ -40,7 +40,7 @@ const features = [
   </div>
 
   <div class="container mx-auto px-4 relative z-10">
-    <div class="text-center mb-16" data-aos="zoom-in">
+    <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">
         <span class="animated-gradient-text">¿Por qué elegirnos?</span>
       </h2>
@@ -134,14 +134,5 @@ const features = [
     filter: drop-shadow(0 6px 8px rgba(242, 116, 5, 0.2));
   }
 
-  [data-aos="flip-up"] {
-    transform: rotateX(15deg) translateY(50px);
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
 
-  [data-aos="flip-up"].aos-animate {
-    transform: rotateX(0) translateY(0);
-    opacity: 1;
-  }
 </style>
