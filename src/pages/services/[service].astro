@@ -5,6 +5,7 @@ import WhatsAppButton from '../../components/WhatsAppButton.astro';
 const services = {
   'servicio-basico': {
     title: 'Servicio Básico',
+    description_index: 'Servicio Básico de Remodelación',
     description: 'Nuestro paquete de Servicio Básico está diseñado para propietarios que buscan renovar y actualizar sus espacios. Este servicio es perfecto para renovaciones rápidas y mejoras esenciales que pueden transformar su espacio en poco tiempo.',
     whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio Básico de remodelación.",
     fullDescription: `Nuestro Servicio Básico incluye:
@@ -28,6 +29,7 @@ const services = {
   },
   'servicio-plus': {
     title: 'Servicio Plus',
+    description_index: 'Servicio Plus de Remodelación',
     description: 'El paquete plus ofrece una solución de renovación integral para quienes buscan mejoras significativas en sus espacios. Este servicio combina artesanía de calidad con elementos de diseño mejorados para crear transformaciones impresionantes.',
     whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio plus de remodelación.",
     fullDescription: `Nuestro Servicio plus incluye:
@@ -51,6 +53,7 @@ const services = {
   },
   'servicio-premium': {
     title: 'Servicio Premium',
+    description_index: 'Servicio Premium de Remodelación',
     description: 'Nuestro Servicio Premium representa el pináculo de la excelencia en la renovación del hogar. Este paquete integral incluye todo lo necesario para una transformación completa de su espacio, con materiales de la más alta calidad y mano de obra experta.',
     whatsappMessage: "Hola, me gustaría obtener más información sobre el Servicio Premium de remodelación.",
     fullDescription: `Nuestro Servicio Premium incluye:
@@ -86,7 +89,7 @@ const { service } = Astro.params;
 const serviceData = services[service];
 ---
 
-<Layout title={`AC Arquitectura - ${serviceData.title}`} description={serviceData.description} url={serviceData.url} image={serviceData.image}>
+<Layout title={`AC Arquitectura - ${serviceData.title}`} description={serviceData.description_index} url={serviceData.url} image={serviceData.image}>
   <main class="pt-20 bg-gradient-to-b from-white to-neutral-50">
     <div class="container mx-auto px-4 py-12">
       <div class="max-w-6xl mx-auto">
