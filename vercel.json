@@ -1,11 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/((?!api).*)",
-      "has": [
-        { "type": "host", "value": "acarquitectura.com.co" }
-      ],
-      "destination": "https://www.acarquitectura.com.co/$1",
+      "source": "/services/basic-service",
+      "destination": "/services/servicio-basico",
       "permanent": true
     }
   ],
